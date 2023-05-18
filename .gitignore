@@ -3,7 +3,7 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 ## 環境変数
-Env.swift
+search-github-user-app/Env.swift
 
 ## メタ情報
 .DS_Store
