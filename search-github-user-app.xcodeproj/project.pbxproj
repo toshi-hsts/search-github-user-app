@@ -13,6 +13,10 @@
 		CA4665302A1547E7002683E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46652E2A1547E7002683E3 /* Main.storyboard */; };
 		CA4665322A1547E8002683E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA4665312A1547E8002683E3 /* Assets.xcassets */; };
 		CA4665352A1547E8002683E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4665332A1547E8002683E3 /* LaunchScreen.storyboard */; };
+		CA46653E2A15FC6D002683E3 /* GitHubAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46653D2A15FC6D002683E3 /* GitHubAPIClient.swift */; };
+		CA4665412A15FF57002683E3 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665402A15FF57002683E3 /* Env.swift */; };
+		CA4665442A160371002683E3 /* UserSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665432A160371002683E3 /* UserSearchResult.swift */; };
+		CA4665462A16038B002683E3 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665452A16038A002683E3 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		CA4665312A1547E8002683E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA4665342A1547E8002683E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA4665362A1547E8002683E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA46653D2A15FC6D002683E3 /* GitHubAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIClient.swift; sourceTree = "<group>"; };
+		CA4665402A15FF57002683E3 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		CA4665432A160371002683E3 /* UserSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchResult.swift; sourceTree = "<group>"; };
+		CA4665452A16038A002683E3 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,8 @@
 		CA4665272A1547E7002683E3 /* search-github-user-app */ = {
 			isa = PBXGroup;
 			children = (
+				CA4665422A160353002683E3 /* Codable */,
+				CA46653F2A15FD56002683E3 /* API */,
 				CA4665282A1547E7002683E3 /* AppDelegate.swift */,
 				CA46652A2A1547E7002683E3 /* SceneDelegate.swift */,
 				CA46652C2A1547E7002683E3 /* ViewController.swift */,
@@ -63,8 +73,26 @@
 				CA4665312A1547E8002683E3 /* Assets.xcassets */,
 				CA4665332A1547E8002683E3 /* LaunchScreen.storyboard */,
 				CA4665362A1547E8002683E3 /* Info.plist */,
+				CA4665402A15FF57002683E3 /* Env.swift */,
 			);
 			path = "search-github-user-app";
+			sourceTree = "<group>";
+		};
+		CA46653F2A15FD56002683E3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CA46653D2A15FC6D002683E3 /* GitHubAPIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		CA4665422A160353002683E3 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				CA4665432A160371002683E3 /* UserSearchResult.swift */,
+				CA4665452A16038A002683E3 /* User.swift */,
+			);
+			path = Codable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +166,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA4665412A15FF57002683E3 /* Env.swift in Sources */,
+				CA46653E2A15FC6D002683E3 /* GitHubAPIClient.swift in Sources */,
 				CA46652D2A1547E7002683E3 /* ViewController.swift in Sources */,
+				CA4665442A160371002683E3 /* UserSearchResult.swift in Sources */,
 				CA4665292A1547E7002683E3 /* AppDelegate.swift in Sources */,
 				CA46652B2A1547E7002683E3 /* SceneDelegate.swift in Sources */,
+				CA4665462A16038B002683E3 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
