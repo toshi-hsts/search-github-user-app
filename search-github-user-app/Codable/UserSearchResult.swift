@@ -9,7 +9,7 @@ import Foundation
 
 struct UserSearchResult: Decodable {
     let totalCount: Int
-    let items: [User]
+    let items: [UserWrapper]
 
     enum CodingKeys: String, CodingKey {
         case totalCount = "total_count"

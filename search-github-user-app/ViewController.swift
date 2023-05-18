@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     @IBOutlet weak private var userTableView: UITableView!
     
     let githubAPIClient = GitHubAPIClient()
-    var users: [User] = []
+    var users: [UserWrapper] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ extension ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let imageUrl = URL(string: users[indexPath.row].avatarUrl)
         
-        cell.textLabel?.text = users[indexPath.row].login
+        cell.textLabel?.text = users[indexPath.row].name
         cell.imageView?.setImage(with: imageUrl)
         
         return cell
