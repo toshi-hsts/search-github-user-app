@@ -34,7 +34,10 @@ extension ViewController: UITableViewDataSource {
     // セル設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let imageUrl = URL(string: users[indexPath.row].avatarUrl)
+        
         cell.textLabel?.text = users[indexPath.row].login
+        cell.imageView?.setImage(with: imageUrl)
         
         return cell
     }
