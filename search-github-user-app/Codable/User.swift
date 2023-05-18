@@ -8,13 +8,13 @@
 import Foundation
 
 struct User: Decodable {
-    let fullName: String
+    let fullName: String? // nilが返却される可能性があるためオプショナルとする
     let name: String
-    let bio: String
-    let followers: String
-    let following: String
+    let bio: String? // nilが返却される可能性があるためオプショナルとする
+    let followers: Int
+    let following: Int
     let avatarUrl: String
-    
+
     enum CodingKeys: String, CodingKey {
         case fullName = "name"
         case name = "login"
