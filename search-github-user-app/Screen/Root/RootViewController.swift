@@ -7,10 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    @IBOutlet weak private var userTableView: UITableView!
+class RootViewController: UIViewController {
+    private var presenter: RootInputCollection!
     
-
+    @IBOutlet weak private var userTableView: UITableView!
+   
     var users: [UserWrapper] = []
     var selectedUserName: String = ""
     
@@ -21,7 +22,6 @@ class ViewController: UIViewController {
             users = try await GitHubAPIClient.shared.getUsers()
             userTableView.reloadData()
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,10 +30,14 @@ class ViewController: UIViewController {
             userDetailVC.userName = selectedUserName
         }
     }
+
+    func inject(_ presenter: RootInputCollection) {
+        self.presenter = presenter
+    }
 }
 
 // MARK: - UITableViewDataSource
-extension ViewController: UITableViewDataSource {
+extension RootViewController: UITableViewDataSource {
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
@@ -52,11 +56,15 @@ extension ViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension ViewController: UITableViewDelegate {
+extension RootViewController: UITableViewDelegate {
     // セルタップ時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         selectedUserName = users[indexPath.row].name
         performSegue(withIdentifier: "toUserDetail", sender: nil)
     }
+}
+
+// MARK: - RootOutputCollection
+extension RootViewController: RootOutputCollection {
 }
