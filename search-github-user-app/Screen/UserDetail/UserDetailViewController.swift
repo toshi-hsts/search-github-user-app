@@ -8,25 +8,25 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
-    var userWrapper: UserWrapper?
+    var userName: String = ""
     let githubAPIClient = GitHubAPIClient()
     var user: User?
     var repositories: [Repository] = []
     var selectedRepositoryUrl: String = ""
     
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var profileLabel: UILabel!
-    @IBOutlet weak var repositoryTableView: UITableView!
+    @IBOutlet weak private var iconImageView: UIImageView!
+    @IBOutlet weak private var profileLabel: UILabel!
+    @IBOutlet weak private var repositoryTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let userWrapper else { return }
-        
         Task {
-            user = try await githubAPIClient.getUser(with: userWrapper.name)
-            repositories = try await githubAPIClient.getRepositories(with: userWrapper.name)
-            await setInfo()
+            async let fetchUser: () =  fetchUser()
+            async let fetchNotForkedRepositories: () = fetchNotForkedRepositories()
+            let _ = await (fetchUser, fetchNotForkedRepositories)
+            
+            await loadInfo()
         }
     }
     
@@ -37,7 +37,17 @@ class UserDetailViewController: UIViewController {
         }
     }
     
-    private func setInfo() async {
+    private func fetchUser() async {
+        user = await githubAPIClient.getUser(with: userName)
+    }
+    
+    private func fetchNotForkedRepositories() async {
+        let fetchedRepositories = await githubAPIClient.getRepositories(with: userName)
+        
+        repositories = fetchedRepositories.filter { $0.isFork == false }
+    }
+    
+    private func loadInfo() async {
         guard let user else { return }
         
         iconImageView.setImage(with: URL(string: user.avatarUrl))

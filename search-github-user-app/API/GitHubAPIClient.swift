@@ -51,7 +51,7 @@ class GitHubAPIClient {
         return users
     }
     
-    func getUser(with name: String) async throws -> User? {
+    func getUser(with name: String) async -> User? {
         let urlString = "https://api.github.com/users/\(name)"
         var user: User?
         
@@ -95,7 +95,7 @@ class GitHubAPIClient {
         return user
     }
     
-    func getRepositories(with userName: String) async throws -> [Repository] {
+    func getRepositories(with userName: String) async -> [Repository] {
         let urlString = "https://api.github.com/users/\(userName)/repos"
         var repositories: [Repository] = []
         
