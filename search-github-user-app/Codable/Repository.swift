@@ -12,6 +12,7 @@ struct Repository: Decodable {
     let initialLanguage: String? // nilが返却される可能性があるためオプショナルとする(cf. https://docs.github.com/ja/rest/search)
     let stargazersCount: Int
     let description: String? // nilが返却される可能性があるためオプショナルとする(cf. https://docs.github.com/ja/rest/search)
+    let htmlUrl: String
     
     // initialLanguageがnilのときは"unknown"とする
     var language: String {
@@ -23,5 +24,6 @@ struct Repository: Decodable {
         case initialLanguage = "language"
         case stargazersCount = "stargazers_count"
         case description
+        case htmlUrl = "html_url"
     }
 }

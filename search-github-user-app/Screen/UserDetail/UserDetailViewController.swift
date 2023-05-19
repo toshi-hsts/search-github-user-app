@@ -12,6 +12,7 @@ class UserDetailViewController: UIViewController {
     let githubAPIClient = GitHubAPIClient()
     var user: User?
     var repositories: [Repository] = []
+    var selectedRepositoryUrl: String = ""
     
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -30,6 +31,13 @@ class UserDetailViewController: UIViewController {
             user = try await githubAPIClient.getUser(with: userWrapper.name)
             repositories = try await githubAPIClient.getRepositories(with: userWrapper.name)
             await setInfo()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toWebView" {
+            let webVC = segue.destination as! WebViewController
+            webVC.urlString = selectedRepositoryUrl
         }
     }
     
@@ -64,4 +72,10 @@ extension UserDetailViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 extension UserDetailViewController: UITableViewDelegate {
+    // セルタップ時に呼ばれる
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        selectedRepositoryUrl = repositories[indexPath.row].htmlUrl
+        performSegue(withIdentifier: "toWebView", sender: nil)
+    }
 }
