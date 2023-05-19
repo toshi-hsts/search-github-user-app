@@ -65,8 +65,10 @@ extension UserDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath)
+        let repo = repositories[indexPath.row]
         
-        cell.textLabel?.text = repositories[indexPath.row].name
+        cell.textLabel?.text = "\(repo.name) / 言語：\(repo.language) / ⭐️\(repo.stargazersCount)"
+        cell.detailTextLabel?.text = repositories[indexPath.row].description
         
         return cell
     }
