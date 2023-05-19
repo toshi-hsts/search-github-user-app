@@ -13,6 +13,20 @@
 		CA4665302A1547E7002683E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA46652E2A1547E7002683E3 /* Main.storyboard */; };
 		CA4665322A1547E8002683E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA4665312A1547E8002683E3 /* Assets.xcassets */; };
 		CA4665352A1547E8002683E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA4665332A1547E8002683E3 /* LaunchScreen.storyboard */; };
+		CA46653E2A15FC6D002683E3 /* GitHubAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46653D2A15FC6D002683E3 /* GitHubAPIClient.swift */; };
+		CA4665412A15FF57002683E3 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665402A15FF57002683E3 /* Env.swift */; };
+		CA4665442A160371002683E3 /* UserSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665432A160371002683E3 /* UserSearchResult.swift */; };
+		CA4665462A16038B002683E3 /* UserWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665452A16038A002683E3 /* UserWrapper.swift */; };
+		CA7ADE902A16184700971CD7 /* UserDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA7ADE8F2A16184700971CD7 /* UserDetail.storyboard */; };
+		CA7ADE922A16186400971CD7 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE912A16186400971CD7 /* UserDetailViewController.swift */; };
+		CA7ADE952A16423600971CD7 /* UIImageView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */; };
+		CA7ADE982A1642EF00971CD7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CA7ADE972A1642EF00971CD7 /* SDWebImage */; };
+		CA7ADE9A2A164CD300971CD7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE992A164CD300971CD7 /* User.swift */; };
+		CA7ADE9C2A16790D00971CD7 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE9B2A16790D00971CD7 /* Repository.swift */; };
+		CA7ADEA02A16803C00971CD7 /* RepositorySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE9F2A16803C00971CD7 /* RepositorySearchResult.swift */; };
+		CA7ADEA22A179AA700971CD7 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADEA12A179AA700971CD7 /* WebViewController.swift */; };
+		CA7ADEA42A179AC500971CD7 /* WebView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA7ADEA32A179AC500971CD7 /* WebView.storyboard */; };
+		CA7ADEA72A179B2C00971CD7 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7ADEA62A179B2C00971CD7 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +38,19 @@
 		CA4665312A1547E8002683E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA4665342A1547E8002683E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA4665362A1547E8002683E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA46653D2A15FC6D002683E3 /* GitHubAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIClient.swift; sourceTree = "<group>"; };
+		CA4665402A15FF57002683E3 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		CA4665432A160371002683E3 /* UserSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchResult.swift; sourceTree = "<group>"; };
+		CA4665452A16038A002683E3 /* UserWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWrapper.swift; sourceTree = "<group>"; };
+		CA7ADE8F2A16184700971CD7 /* UserDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetail.storyboard; sourceTree = "<group>"; };
+		CA7ADE912A16186400971CD7 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utility.swift"; sourceTree = "<group>"; };
+		CA7ADE992A164CD300971CD7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CA7ADE9B2A16790D00971CD7 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		CA7ADE9F2A16803C00971CD7 /* RepositorySearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchResult.swift; sourceTree = "<group>"; };
+		CA7ADEA12A179AA700971CD7 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		CA7ADEA32A179AC500971CD7 /* WebView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WebView.storyboard; sourceTree = "<group>"; };
+		CA7ADEA62A179B2C00971CD7 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7ADEA72A179B2C00971CD7 /* WebKit.framework in Frameworks */,
+				CA7ADE982A1642EF00971CD7 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +71,7 @@
 			children = (
 				CA4665272A1547E7002683E3 /* search-github-user-app */,
 				CA4665262A1547E7002683E3 /* Products */,
+				CA7ADEA52A179B2C00971CD7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +86,99 @@
 		CA4665272A1547E7002683E3 /* search-github-user-app */ = {
 			isa = PBXGroup;
 			children = (
+				CA7ADEAC2A179CCD00971CD7 /* Env */,
+				CA7ADE932A1641F000971CD7 /* Extension */,
+				CA4665422A160353002683E3 /* Codable */,
+				CA46653F2A15FD56002683E3 /* API */,
+				CA7ADEA82A179C6E00971CD7 /* Screen */,
 				CA4665282A1547E7002683E3 /* AppDelegate.swift */,
 				CA46652A2A1547E7002683E3 /* SceneDelegate.swift */,
-				CA46652C2A1547E7002683E3 /* ViewController.swift */,
-				CA46652E2A1547E7002683E3 /* Main.storyboard */,
 				CA4665312A1547E8002683E3 /* Assets.xcassets */,
 				CA4665332A1547E8002683E3 /* LaunchScreen.storyboard */,
 				CA4665362A1547E8002683E3 /* Info.plist */,
 			);
 			path = "search-github-user-app";
+			sourceTree = "<group>";
+		};
+		CA46653F2A15FD56002683E3 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				CA46653D2A15FC6D002683E3 /* GitHubAPIClient.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		CA4665422A160353002683E3 /* Codable */ = {
+			isa = PBXGroup;
+			children = (
+				CA4665432A160371002683E3 /* UserSearchResult.swift */,
+				CA7ADE9F2A16803C00971CD7 /* RepositorySearchResult.swift */,
+				CA4665452A16038A002683E3 /* UserWrapper.swift */,
+				CA7ADE992A164CD300971CD7 /* User.swift */,
+				CA7ADE9B2A16790D00971CD7 /* Repository.swift */,
+			);
+			path = Codable;
+			sourceTree = "<group>";
+		};
+		CA7ADE932A1641F000971CD7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		CA7ADEA52A179B2C00971CD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA7ADEA62A179B2C00971CD7 /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA7ADEA82A179C6E00971CD7 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				CA7ADEAB2A179CB700971CD7 /* Root */,
+				CA7ADEAA2A179CA300971CD7 /* UserDetail */,
+				CA7ADEA92A179C9600971CD7 /* WebView */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		CA7ADEA92A179C9600971CD7 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				CA7ADEA12A179AA700971CD7 /* WebViewController.swift */,
+				CA7ADEA32A179AC500971CD7 /* WebView.storyboard */,
+			);
+			path = WebView;
+			sourceTree = "<group>";
+		};
+		CA7ADEAA2A179CA300971CD7 /* UserDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CA7ADE8F2A16184700971CD7 /* UserDetail.storyboard */,
+				CA7ADE912A16186400971CD7 /* UserDetailViewController.swift */,
+			);
+			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		CA7ADEAB2A179CB700971CD7 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				CA46652C2A1547E7002683E3 /* ViewController.swift */,
+				CA46652E2A1547E7002683E3 /* Main.storyboard */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		CA7ADEAC2A179CCD00971CD7 /* Env */ = {
+			isa = PBXGroup;
+			children = (
+				CA4665402A15FF57002683E3 /* Env.swift */,
+			);
+			path = Env;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +197,9 @@
 			dependencies = (
 			);
 			name = "search-github-user-app";
+			packageProductDependencies = (
+				CA7ADE972A1642EF00971CD7 /* SDWebImage */,
+			);
 			productName = "search-github-user-app";
 			productReference = CA4665252A1547E7002683E3 /* search-github-user-app.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +228,9 @@
 				Base,
 			);
 			mainGroup = CA46651C2A1547E7002683E3;
+			packageReferences = (
+				CA7ADE962A1642EF00971CD7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = CA4665262A1547E7002683E3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +247,9 @@
 			files = (
 				CA4665352A1547E8002683E3 /* LaunchScreen.storyboard in Resources */,
 				CA4665322A1547E8002683E3 /* Assets.xcassets in Resources */,
+				CA7ADE902A16184700971CD7 /* UserDetail.storyboard in Resources */,
 				CA4665302A1547E7002683E3 /* Main.storyboard in Resources */,
+				CA7ADEA42A179AC500971CD7 /* WebView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +260,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA4665412A15FF57002683E3 /* Env.swift in Sources */,
+				CA46653E2A15FC6D002683E3 /* GitHubAPIClient.swift in Sources */,
+				CA7ADE922A16186400971CD7 /* UserDetailViewController.swift in Sources */,
+				CA7ADE952A16423600971CD7 /* UIImageView+Utility.swift in Sources */,
+				CA7ADEA02A16803C00971CD7 /* RepositorySearchResult.swift in Sources */,
 				CA46652D2A1547E7002683E3 /* ViewController.swift in Sources */,
+				CA7ADE9C2A16790D00971CD7 /* Repository.swift in Sources */,
+				CA4665442A160371002683E3 /* UserSearchResult.swift in Sources */,
 				CA4665292A1547E7002683E3 /* AppDelegate.swift in Sources */,
 				CA46652B2A1547E7002683E3 /* SceneDelegate.swift in Sources */,
+				CA7ADE9A2A164CD300971CD7 /* User.swift in Sources */,
+				CA7ADEA22A179AA700971CD7 /* WebViewController.swift in Sources */,
+				CA4665462A16038B002683E3 /* UserWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +490,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CA7ADE962A1642EF00971CD7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CA7ADE972A1642EF00971CD7 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA7ADE962A1642EF00971CD7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CA46651D2A1547E7002683E3 /* Project object */;
 }
