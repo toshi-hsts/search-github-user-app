@@ -15,11 +15,7 @@ class UserDetailViewController: UIViewController {
     var selectedRepositoryUrl: String = ""
     
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var fullNameLabel: UILabel!
-    @IBOutlet weak var followerLabel: UILabel!
-    @IBOutlet weak var followingLabel: UILabel!
-    @IBOutlet weak var bioLabel: UILabel!
+    @IBOutlet weak var profileLabel: UILabel!
     @IBOutlet weak var repositoryTableView: UITableView!
     
     override func viewDidLoad() {
@@ -45,11 +41,7 @@ class UserDetailViewController: UIViewController {
         guard let user else { return }
         
         iconImageView.setImage(with: URL(string: user.avatarUrl))
-        nameLabel.text = user.name
-        fullNameLabel.text = user.fullName
-        followerLabel.text = "follwer数：　\(user.followers)"
-        followingLabel.text = "follwing数：　\(user.following)"
-        bioLabel.text = user.bio
+        profileLabel.text = "ユーザ名: \(user.name)\nフルネーム: \(user.fullName ?? "登録なし")\nフォロワー数: \(user.followers)\nフォロー数: \(user.following)\n自己紹介: \(user.bio ?? "登録なし")"
         
         repositoryTableView.reloadData()
     }
