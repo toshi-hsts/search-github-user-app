@@ -8,29 +8,25 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
-    var userWrapper: UserWrapper?
+    var userName: String = ""
     let githubAPIClient = GitHubAPIClient()
     var user: User?
     var repositories: [Repository] = []
     var selectedRepositoryUrl: String = ""
     
-    @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var fullNameLabel: UILabel!
-    @IBOutlet weak var followerLabel: UILabel!
-    @IBOutlet weak var followingLabel: UILabel!
-    @IBOutlet weak var bioLabel: UILabel!
-    @IBOutlet weak var repositoryTableView: UITableView!
+    @IBOutlet weak private var iconImageView: UIImageView!
+    @IBOutlet weak private var profileLabel: UILabel!
+    @IBOutlet weak private var repositoryTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let userWrapper else { return }
-        
         Task {
-            user = try await githubAPIClient.getUser(with: userWrapper.name)
-            repositories = try await githubAPIClient.getRepositories(with: userWrapper.name)
-            await setInfo()
+            async let fetchUser: () =  fetchUser()
+            async let fetchNotForkedRepositories: () = fetchNotForkedRepositories()
+            let _ = await (fetchUser, fetchNotForkedRepositories)
+            
+            await loadInfo()
         }
     }
     
@@ -41,15 +37,21 @@ class UserDetailViewController: UIViewController {
         }
     }
     
-    private func setInfo() async {
+    private func fetchUser() async {
+        user = await githubAPIClient.getUser(with: userName)
+    }
+    
+    private func fetchNotForkedRepositories() async {
+        let fetchedRepositories = await githubAPIClient.getRepositories(with: userName)
+        
+        repositories = fetchedRepositories.filter { $0.isFork == false }
+    }
+    
+    private func loadInfo() async {
         guard let user else { return }
         
         iconImageView.setImage(with: URL(string: user.avatarUrl))
-        nameLabel.text = user.name
-        fullNameLabel.text = user.fullName
-        followerLabel.text = "follwer数：　\(user.followers)"
-        followingLabel.text = "follwing数：　\(user.following)"
-        bioLabel.text = user.bio
+        profileLabel.text = "ユーザ名: \(user.name)\nフルネーム: \(user.fullName ?? "登録なし")\nフォロワー数: \(user.followers)\nフォロー数: \(user.following)\n自己紹介: \(user.bio ?? "登録なし")"
         
         repositoryTableView.reloadData()
     }
@@ -63,8 +65,10 @@ extension UserDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath)
+        let repo = repositories[indexPath.row]
         
-        cell.textLabel?.text = repositories[indexPath.row].name
+        cell.textLabel?.text = "\(repo.name) / 言語：\(repo.language) / ⭐️\(repo.stargazersCount)"
+        cell.detailTextLabel?.text = repositories[indexPath.row].description
         
         return cell
     }

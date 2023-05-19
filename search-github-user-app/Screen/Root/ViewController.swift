@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     let githubAPIClient = GitHubAPIClient()
     var users: [UserWrapper] = []
-    var selectedUser: UserWrapper?
+    var selectedUserName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toUserDetail" {
             let userDetailVC = segue.destination as! UserDetailViewController
-            userDetailVC.userWrapper = selectedUser
+            userDetailVC.userName = selectedUserName
         }
     }
 }
@@ -56,7 +56,7 @@ extension ViewController: UITableViewDelegate {
     // セルタップ時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedUser = users[indexPath.row]
+        selectedUserName = users[indexPath.row].name
         performSegue(withIdentifier: "toUserDetail", sender: nil)
     }
 }
