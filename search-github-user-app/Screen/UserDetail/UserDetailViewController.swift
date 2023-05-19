@@ -9,7 +9,6 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
     var userName: String = ""
-    let githubAPIClient = GitHubAPIClient()
     var user: User?
     var repositories: [Repository] = []
     var selectedRepositoryUrl: String = ""
@@ -38,11 +37,11 @@ class UserDetailViewController: UIViewController {
     }
     
     private func fetchUser() async {
-        user = await githubAPIClient.getUser(with: userName)
+        user = await GitHubAPIClient.shared.getUser(with: userName)
     }
     
     private func fetchNotForkedRepositories() async {
-        let fetchedRepositories = await githubAPIClient.getRepositories(with: userName)
+        let fetchedRepositories = await GitHubAPIClient.shared.getRepositories(with: userName)
         
         repositories = fetchedRepositories.filter { $0.isFork == false }
     }

@@ -10,7 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak private var userTableView: UITableView!
     
-    let githubAPIClient = GitHubAPIClient()
+
     var users: [UserWrapper] = []
     var selectedUserName: String = ""
     
@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         Task {
-            users = try await githubAPIClient.getUsers()
+            users = try await GitHubAPIClient.shared.getUsers()
             userTableView.reloadData()
         }
         
