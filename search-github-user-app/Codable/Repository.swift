@@ -17,7 +17,7 @@ struct Repository: Decodable {
     
     // initialLanguageがnilのときは"unknown"とする
     var language: String {
-        initialLanguage == nil ? "unknown language" : initialLanguage!
+        initialLanguage == nil ? "unknown" : initialLanguage!
     }
 
     enum CodingKeys: String, CodingKey {
