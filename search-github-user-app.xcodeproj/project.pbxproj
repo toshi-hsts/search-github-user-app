@@ -22,6 +22,8 @@
 		CA7ADE952A16423600971CD7 /* UIImageView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */; };
 		CA7ADE982A1642EF00971CD7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CA7ADE972A1642EF00971CD7 /* SDWebImage */; };
 		CA7ADE9A2A164CD300971CD7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE992A164CD300971CD7 /* User.swift */; };
+		CA7ADE9C2A16790D00971CD7 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE9B2A16790D00971CD7 /* Repository.swift */; };
+		CA7ADEA02A16803C00971CD7 /* RepositorySearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE9F2A16803C00971CD7 /* RepositorySearchResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		CA7ADE912A16186400971CD7 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utility.swift"; sourceTree = "<group>"; };
 		CA7ADE992A164CD300971CD7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CA7ADE9B2A16790D00971CD7 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		CA7ADE9F2A16803C00971CD7 /* RepositorySearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,8 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				CA4665432A160371002683E3 /* UserSearchResult.swift */,
+				CA7ADE9F2A16803C00971CD7 /* RepositorySearchResult.swift */,
 				CA4665452A16038A002683E3 /* UserWrapper.swift */,
 				CA7ADE992A164CD300971CD7 /* User.swift */,
+				CA7ADE9B2A16790D00971CD7 /* Repository.swift */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -199,7 +205,9 @@
 				CA46653E2A15FC6D002683E3 /* GitHubAPIClient.swift in Sources */,
 				CA7ADE922A16186400971CD7 /* UserDetailViewController.swift in Sources */,
 				CA7ADE952A16423600971CD7 /* UIImageView+Utility.swift in Sources */,
+				CA7ADEA02A16803C00971CD7 /* RepositorySearchResult.swift in Sources */,
 				CA46652D2A1547E7002683E3 /* ViewController.swift in Sources */,
+				CA7ADE9C2A16790D00971CD7 /* Repository.swift in Sources */,
 				CA4665442A160371002683E3 /* UserSearchResult.swift in Sources */,
 				CA4665292A1547E7002683E3 /* AppDelegate.swift in Sources */,
 				CA46652B2A1547E7002683E3 /* SceneDelegate.swift in Sources */,
