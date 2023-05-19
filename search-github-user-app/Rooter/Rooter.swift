@@ -22,5 +22,19 @@ final class Router {
         rootVC.inject(rootPresenter)
         showHandler(rootNC)
     }
+    
+    /// detail画面を表示する
+    func showDetail(with userName: String,
+                    showHandler: (_ detailVC: UserDetailViewController) -> Void) {
+        guard let detailVC = UIStoryboard(name: "UserDetail", bundle: nil)
+            .instantiateViewController(withIdentifier: "detailVC") as? UserDetailViewController else { return}
+        
+        detailVC.userName = userName
+
+        let userDetailPresenter = UserDetailPresenter(view: detailVC, userName: userName)
+        detailVC.inject(presenter: userDetailPresenter)
+
+        showHandler(detailVC)
+    }
 }
 

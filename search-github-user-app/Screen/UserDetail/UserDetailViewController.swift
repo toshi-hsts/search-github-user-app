@@ -12,6 +12,7 @@ class UserDetailViewController: UIViewController {
     var user: User?
     var repositories: [Repository] = []
     var selectedRepositoryUrl: String = ""
+    private var presenter: UserDetailInputCollection!
     
     @IBOutlet weak private var iconImageView: UIImageView!
     @IBOutlet weak private var profileLabel: UILabel!
@@ -34,6 +35,10 @@ class UserDetailViewController: UIViewController {
             let webVC = segue.destination as! WebViewController
             webVC.urlString = selectedRepositoryUrl
         }
+    }
+    
+    func inject(presenter: UserDetailInputCollection) {
+        self.presenter = presenter
     }
     
     private func fetchUser() async {
@@ -81,4 +86,8 @@ extension UserDetailViewController: UITableViewDelegate {
         selectedRepositoryUrl = repositories[indexPath.row].htmlUrl
         performSegue(withIdentifier: "toWebView", sender: nil)
     }
+}
+
+// MARK: - UserDetailPresenterOutputCollection
+extension UserDetailViewController: UserDetailOutputCollection {
 }

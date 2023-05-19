@@ -18,17 +18,8 @@ class RootViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Task {
-            users = try await GitHubAPIClient.shared.getUsers()
-            userTableView.reloadData()
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toUserDetail" {
-            let userDetailVC = segue.destination as! UserDetailViewController
-            userDetailVC.userName = selectedUserName
-        }
+        // fetch users
+        presenter.getUsers()
     }
 
     func inject(_ presenter: RootInputCollection) {
@@ -40,15 +31,15 @@ class RootViewController: UIViewController {
 extension RootViewController: UITableViewDataSource {
     // セル数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return presenter.users.count
     }
     
     // セル設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let imageUrl = URL(string: users[indexPath.row].avatarUrl)
+        let imageUrl = URL(string: presenter.users[indexPath.row].avatarUrl)
         
-        cell.textLabel?.text = users[indexPath.row].name
+        cell.textLabel?.text = presenter.users[indexPath.row].name
         cell.imageView?.setImage(with: imageUrl)
         
         return cell
@@ -60,11 +51,20 @@ extension RootViewController: UITableViewDelegate {
     // セルタップ時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedUserName = users[indexPath.row].name
-        performSegue(withIdentifier: "toUserDetail", sender: nil)
+        presenter.tapTableViewCell(at: indexPath.row)
     }
 }
 
 // MARK: - RootOutputCollection
 extension RootViewController: RootOutputCollection {
+    /// 詳細画面に移動する
+    func moveToDetail(with userName: String) {
+        Router.shared.showDetail(with: userName) { detailVC in
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
+    
+    func tableReload() {
+        userTableView.reloadData()
+    }
 }
