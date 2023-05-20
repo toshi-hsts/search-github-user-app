@@ -16,14 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="検索したいユーザを入力してね" translatesAutoresizingMaskIntoConstraints="NO" id="YDL-JR-Fk8">
+                                <rect key="frame" x="0.0" y="103" width="393" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="AMP-67-166"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cbA-2q-c4m">
-                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <rect key="frame" x="0.0" y="190" width="393" height="628"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="4Sb-AD-gca"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="NNP-UR-U9E"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="該当件数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tik-Jk-c3u">
+                                <rect key="frame" x="313" y="159" width="70" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpt-Uk-IJY" customClass="LoadingView" customModule="search_github_user_app" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </view>
@@ -31,14 +44,19 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="cbA-2q-c4m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9S8-p4-ko9"/>
-                            <constraint firstItem="cbA-2q-c4m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Q24-ZK-irI"/>
+                            <constraint firstItem="YDL-JR-Fk8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Bc-aF-OhF"/>
+                            <constraint firstItem="tik-Jk-c3u" firstAttribute="top" secondItem="YDL-JR-Fk8" secondAttribute="bottom" id="QkT-4Y-1cx"/>
                             <constraint firstItem="kpt-Uk-IJY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SlK-ur-AgD"/>
-                            <constraint firstItem="cbA-2q-c4m" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="YYp-Ui-22e"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tik-Jk-c3u" secondAttribute="trailing" constant="10" id="UXe-ME-KW6"/>
+                            <constraint firstItem="YDL-JR-Fk8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WxU-Kz-Y8C"/>
+                            <constraint firstItem="cbA-2q-c4m" firstAttribute="top" secondItem="tik-Jk-c3u" secondAttribute="bottom" constant="10" id="bad-gQ-erM"/>
                             <constraint firstAttribute="bottom" secondItem="kpt-Uk-IJY" secondAttribute="bottom" id="eC6-Jf-0Jp"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cbA-2q-c4m" secondAttribute="bottom" id="iG0-VL-ccD"/>
                             <constraint firstItem="kpt-Uk-IJY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jV0-Mt-oa5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YDL-JR-Fk8" secondAttribute="trailing" id="kFQ-YN-nbQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cbA-2q-c4m" secondAttribute="bottom" id="lYL-8z-Fhb"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kpt-Uk-IJY" secondAttribute="trailing" id="rF3-aO-22T"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cbA-2q-c4m" secondAttribute="trailing" id="v9V-bF-bUb"/>
+                            <constraint firstItem="cbA-2q-c4m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wRd-0F-VtZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="I7Y-eB-Khf"/>
