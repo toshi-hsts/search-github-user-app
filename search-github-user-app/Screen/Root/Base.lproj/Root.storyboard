@@ -63,6 +63,7 @@
                     <navigationItem key="navigationItem" id="I7Y-eB-Khf"/>
                     <connections>
                         <outlet property="loadingView" destination="kpt-Uk-IJY" id="R3A-oG-Gzu"/>
+                        <outlet property="totalCountLabel" destination="tik-Jk-c3u" id="IJu-nQ-sot"/>
                         <outlet property="userTableView" destination="cbA-2q-c4m" id="QM4-My-GLW"/>
                     </connections>
                 </viewController>

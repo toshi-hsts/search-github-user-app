@@ -21,6 +21,7 @@
 		CA4665462A16038B002683E3 /* UserWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665452A16038A002683E3 /* UserWrapper.swift */; };
 		CA6B18402A18C38D00163B7F /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B183F2A18C38D00163B7F /* LoadingView.xib */; };
 		CA6B18422A18C3D800163B7F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B18412A18C3D800163B7F /* LoadingView.swift */; };
+		CA6B18442A192A5800163B7F /* Int+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B18432A192A5800163B7F /* Int+Utility.swift */; };
 		CA7ADE902A16184700971CD7 /* UserDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA7ADE8F2A16184700971CD7 /* UserDetail.storyboard */; };
 		CA7ADE922A16186400971CD7 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE912A16186400971CD7 /* UserDetailViewController.swift */; };
 		CA7ADE952A16423600971CD7 /* UIImageView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */; };
@@ -60,6 +61,7 @@
 		CA4665452A16038A002683E3 /* UserWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWrapper.swift; sourceTree = "<group>"; };
 		CA6B183F2A18C38D00163B7F /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		CA6B18412A18C3D800163B7F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CA6B18432A192A5800163B7F /* Int+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Utility.swift"; sourceTree = "<group>"; };
 		CA7ADE8F2A16184700971CD7 /* UserDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetail.storyboard; sourceTree = "<group>"; };
 		CA7ADE912A16186400971CD7 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utility.swift"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */,
+				CA6B18432A192A5800163B7F /* Int+Utility.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				CA46652D2A1547E7002683E3 /* RootViewController.swift in Sources */,
 				CA7ADE9C2A16790D00971CD7 /* Repository.swift in Sources */,
 				CA4665442A160371002683E3 /* UserSearchResult.swift in Sources */,
+				CA6B18442A192A5800163B7F /* Int+Utility.swift in Sources */,
 				CA7ADECC2A17F60E00971CD7 /* Rooter.swift in Sources */,
 				CA7ADEE12A18A16200971CD7 /* WebViewOutputCollection.swift in Sources */,
 				CA7ADED72A1805DB00971CD7 /* DetailPresenter.swift in Sources */,

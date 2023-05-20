@@ -11,10 +11,9 @@ class GitHubAPIClient {
     
     public static let shared = GitHubAPIClient()
     
-    func getUsers(page: Int) async -> [UserWrapper] {
-        // TODO: swiftという文言でクエリしてる部分を検索機能で取得した値に置き換える
-        let urlString = "https://api.github.com/search/users?q=swift&page=\(page)"
-        var users: [UserWrapper] = []
+    func getUsers(keyword: String, page: Int) async -> UserSearchResult? {
+        let urlString = "https://api.github.com/search/users?q=\(keyword)&page=\(page)"
+        var searchResult: UserSearchResult?
         
         guard let url = URL(string: urlString) else {
             fatalError()
@@ -39,8 +38,7 @@ class GitHubAPIClient {
             
             switch httpStatus.statusCode {
             case 200 ..< 400:
-                let searchResult  = try JSONDecoder().decode(UserSearchResult.self, from: data)
-                users = searchResult.items
+                searchResult  = try JSONDecoder().decode(UserSearchResult.self, from: data)
             case 400... :
                 fatalError()
             default:
@@ -51,7 +49,7 @@ class GitHubAPIClient {
             fatalError()
         }
         
-        return users
+        return searchResult
     }
     
     func getUser(with name: String) async -> User? {

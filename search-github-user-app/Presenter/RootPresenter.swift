@@ -18,6 +18,7 @@ final class RootPresenter {
     private(set) var users: [UserWrapper] = []
     private var loadState: LoadState = .none
     private var page = 1
+    private var searchedWord = ""
 
     init(view: RootOutputCollection) {
         self.view = view
@@ -36,11 +37,15 @@ extension RootPresenter: RootInputCollection {
     @MainActor
     func getUsers() {
         Task {
-            let fetchUsers = await GitHubAPIClient.shared.getUsers(page: page)
-            users += fetchUsers
+            let fetchUsers = await GitHubAPIClient.shared.getUsers(keyword: searchedWord, page: page)
+            users += fetchUsers?.items ?? []
             loadState = .standby
             view.tableReload()
             view.stopAnimatingIndicator()
+            
+            if page == 1 {
+                view.setTotalCount(fetchUsers?.totalCount ?? 0)
+            }
         }
     }
     
@@ -52,6 +57,17 @@ extension RootPresenter: RootInputCollection {
         view.startAnimatingIndicator()
         loadState = .loading
         page += 1
+        getUsers()
+    }
+    
+    ///　検索ボタンが押された際の処理
+    @MainActor
+    func tapSearchButton(with searchWord: String) {
+        view.startAnimatingIndicator()
+        page = 1
+        users = []
+        loadState = .loading
+        searchedWord = searchWord
         getUsers()
     }
 }
