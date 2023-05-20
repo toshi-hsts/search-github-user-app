@@ -12,4 +12,5 @@ protocol RootInputCollection: AnyObject {
     func tapTableViewCell(at index: Int)
     func getUsers()
     func approachTableViewBottom()
+    func tapSearchButton(with searchWord: String)
 }

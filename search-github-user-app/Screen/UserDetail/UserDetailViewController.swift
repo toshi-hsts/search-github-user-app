@@ -20,6 +20,8 @@ class UserDetailViewController: UIViewController {
         super.viewDidLoad()
         presenter.getUser()
         startAnimatingIndicator()
+        
+        navigationItem.backButtonTitle = "戻る"
     }
     
     func inject(presenter: UserDetailInputCollection) {

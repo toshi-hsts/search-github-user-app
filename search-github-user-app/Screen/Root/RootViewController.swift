@@ -13,13 +13,12 @@ class RootViewController: UIViewController {
     
     @IBOutlet weak private var userTableView: UITableView!
     @IBOutlet weak private var loadingView: LoadingView!
+    @IBOutlet weak private var totalCountLabel: UILabel!
+    @IBOutlet weak private var initialImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // start indicator
-        startAnimatingIndicator()
-        // fetch users
-        presenter.getUsers()
+        navigationItem.backButtonTitle = "戻る"
         // setup xib
         userTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: cell)
     }
@@ -70,6 +69,12 @@ extension RootViewController: RootOutputCollection {
         userTableView.reloadData()
     }
     
+    /// total件数
+    func setTotalCount(_ totalCount: Int) {
+        totalCountLabel.text = "該当件数：\(totalCount.addComma())"
+        totalCountLabel.isHidden = false
+    }
+    
     /// インジケーターを開始する
     func startAnimatingIndicator() {
         loadingView.startAnimatingIndicator()
@@ -100,5 +105,19 @@ extension RootViewController {
         if distance < 50 {
             presenter.approachTableViewBottom()
         }
+    }
+}
+
+// MARK: - UISearchBarDelegate
+extension RootViewController: UISearchBarDelegate {
+    // 検索ボタンがタップされるたびに呼ばれる
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard searchBar.text?.isEmpty == false,
+              let searchWord = searchBar.text
+        else { return }
+
+        searchBar.resignFirstResponder()
+        initialImageView.isHidden = true
+        presenter.tapSearchButton(with: searchWord)
     }
 }
