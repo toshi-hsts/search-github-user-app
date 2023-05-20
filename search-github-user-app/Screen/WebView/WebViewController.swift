@@ -9,6 +9,7 @@ import UIKit
 import WebKit
 
 class WebViewController: UIViewController {
+    private var presenter: WebViewInputCollection!
     private let webView = WKWebView()
     var urlString: String = ""
     
@@ -25,4 +26,13 @@ class WebViewController: UIViewController {
         webView.load(request)
         view.addSubview(webView)
     }
+    
+    func inject(presenter: WebViewInputCollection, urlString: String) {
+        self.presenter = presenter
+        self.urlString = urlString
+    }
+}
+
+// MARK: - RootOutputCollection
+extension WebViewController: WebViewOutputCollection {
 }

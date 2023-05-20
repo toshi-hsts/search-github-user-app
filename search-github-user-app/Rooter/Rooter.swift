@@ -36,5 +36,19 @@ final class Router {
 
         showHandler(detailVC)
     }
+    
+    /// webView画面を表示する
+    func showWebView(with urlString: String,
+                    showHandler: (_ detailVC: WebViewController) -> Void) {
+        guard let webVC = UIStoryboard(name: "WebView", bundle: nil)
+            .instantiateViewController(withIdentifier: "webVC") as? WebViewController else { return}
+        
+        webVC.urlString = urlString
+
+        let webViewPresenter = WebViewPresenter(view: webVC, urlString: urlString)
+        webVC.inject(presenter: webViewPresenter, urlString: urlString)
+
+        showHandler(webVC)
+    }
 }
 

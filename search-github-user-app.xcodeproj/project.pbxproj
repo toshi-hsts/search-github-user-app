@@ -34,6 +34,9 @@
 		CA7ADED72A1805DB00971CD7 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADED62A1805DB00971CD7 /* DetailPresenter.swift */; };
 		CA7ADEDA2A18093300971CD7 /* UserDetailInputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADED92A18093300971CD7 /* UserDetailInputCollection.swift */; };
 		CA7ADEDC2A18097D00971CD7 /* UserDetailOutputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADEDB2A18097D00971CD7 /* UserDetailOutputCollection.swift */; };
+		CA7ADEDE2A189DC400971CD7 /* WebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADEDD2A189DC400971CD7 /* WebViewPresenter.swift */; };
+		CA7ADEE12A18A16200971CD7 /* WebViewOutputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADEE02A18A16200971CD7 /* WebViewOutputCollection.swift */; };
+		CA7ADEE32A18A16F00971CD7 /* WebViewInputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADEE22A18A16F00971CD7 /* WebViewInputCollection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +68,9 @@
 		CA7ADED62A1805DB00971CD7 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		CA7ADED92A18093300971CD7 /* UserDetailInputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailInputCollection.swift; sourceTree = "<group>"; };
 		CA7ADEDB2A18097D00971CD7 /* UserDetailOutputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailOutputCollection.swift; sourceTree = "<group>"; };
+		CA7ADEDD2A189DC400971CD7 /* WebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPresenter.swift; sourceTree = "<group>"; };
+		CA7ADEE02A18A16200971CD7 /* WebViewOutputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewOutputCollection.swift; sourceTree = "<group>"; };
+		CA7ADEE22A18A16F00971CD7 /* WebViewInputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewInputCollection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +217,7 @@
 			children = (
 				CA7ADECE2A17F6D500971CD7 /* RootPresenter.swift */,
 				CA7ADED62A1805DB00971CD7 /* DetailPresenter.swift */,
+				CA7ADEDD2A189DC400971CD7 /* WebViewPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -218,6 +225,7 @@
 		CA7ADED02A17F73600971CD7 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				CA7ADEDF2A189DDF00971CD7 /* WebView */,
 				CA7ADED82A18091B00971CD7 /* UserDetail */,
 				CA7ADED12A17F74900971CD7 /* Root */,
 			);
@@ -240,6 +248,15 @@
 				CA7ADEDB2A18097D00971CD7 /* UserDetailOutputCollection.swift */,
 			);
 			path = UserDetail;
+			sourceTree = "<group>";
+		};
+		CA7ADEDF2A189DDF00971CD7 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				CA7ADEE02A18A16200971CD7 /* WebViewOutputCollection.swift */,
+				CA7ADEE22A18A16F00971CD7 /* WebViewInputCollection.swift */,
+			);
+			path = WebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,14 +350,17 @@
 				CA7ADE9C2A16790D00971CD7 /* Repository.swift in Sources */,
 				CA4665442A160371002683E3 /* UserSearchResult.swift in Sources */,
 				CA7ADECC2A17F60E00971CD7 /* Rooter.swift in Sources */,
+				CA7ADEE12A18A16200971CD7 /* WebViewOutputCollection.swift in Sources */,
 				CA7ADED72A1805DB00971CD7 /* DetailPresenter.swift in Sources */,
 				CA4665292A1547E7002683E3 /* AppDelegate.swift in Sources */,
 				CA46652B2A1547E7002683E3 /* SceneDelegate.swift in Sources */,
 				CA7ADE9A2A164CD300971CD7 /* User.swift in Sources */,
+				CA7ADEDE2A189DC400971CD7 /* WebViewPresenter.swift in Sources */,
 				CA7ADEDC2A18097D00971CD7 /* UserDetailOutputCollection.swift in Sources */,
 				CA7ADED52A17FB7A00971CD7 /* RootInputCollection.swift in Sources */,
 				CA7ADEA22A179AA700971CD7 /* WebViewController.swift in Sources */,
 				CA4665462A16038B002683E3 /* UserWrapper.swift in Sources */,
+				CA7ADEE32A18A16F00971CD7 /* WebViewInputCollection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
