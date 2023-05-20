@@ -8,4 +8,6 @@
 import Foundation
 
 protocol UserDetailOutputCollection: AnyObject {
+    func loadUserInfo() -> Void
+    func moveToDetail(with urlString: String) 
 }

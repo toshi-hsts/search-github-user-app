@@ -93,22 +93,11 @@
                         <outlet property="iconImageView" destination="DP7-b5-RRq" id="VN6-5I-Qzh"/>
                         <outlet property="profileLabel" destination="FO5-iF-CW6" id="zsW-4N-vCE"/>
                         <outlet property="repositoryTableView" destination="2mf-wp-f9o" id="gU6-B7-j7f"/>
-                        <segue destination="bQ2-2p-34e" kind="show" identifier="toWebView" id="euU-fH-oTC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="135.1145038167939" y="3.5211267605633805"/>
-        </scene>
-        <!--WebView-->
-        <scene sceneID="tfj-RE-D8s">
-            <objects>
-                <viewControllerPlaceholder storyboardName="WebView" id="bQ2-2p-34e" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="WEp-DD-jHf"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ax9-Eu-wff" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1102" y="4"/>
         </scene>
     </scenes>
     <resources>

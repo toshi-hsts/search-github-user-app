@@ -225,9 +225,9 @@
 		CA7ADED02A17F73600971CD7 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				CA7ADEDF2A189DDF00971CD7 /* WebView */,
-				CA7ADED82A18091B00971CD7 /* UserDetail */,
 				CA7ADED12A17F74900971CD7 /* Root */,
+				CA7ADED82A18091B00971CD7 /* UserDetail */,
+				CA7ADEDF2A189DDF00971CD7 /* WebView */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -235,8 +235,8 @@
 		CA7ADED12A17F74900971CD7 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				CA7ADED22A17FB6A00971CD7 /* RootOutputCollection.swift */,
 				CA7ADED42A17FB7A00971CD7 /* RootInputCollection.swift */,
+				CA7ADED22A17FB6A00971CD7 /* RootOutputCollection.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -253,8 +253,8 @@
 		CA7ADEDF2A189DDF00971CD7 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
-				CA7ADEE02A18A16200971CD7 /* WebViewOutputCollection.swift */,
 				CA7ADEE22A18A16F00971CD7 /* WebViewInputCollection.swift */,
+				CA7ADEE02A18A16200971CD7 /* WebViewOutputCollection.swift */,
 			);
 			path = WebView;
 			sourceTree = "<group>";

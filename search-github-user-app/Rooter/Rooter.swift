@@ -28,8 +28,6 @@ final class Router {
                     showHandler: (_ detailVC: UserDetailViewController) -> Void) {
         guard let detailVC = UIStoryboard(name: "UserDetail", bundle: nil)
             .instantiateViewController(withIdentifier: "detailVC") as? UserDetailViewController else { return}
-        
-        detailVC.userName = userName
 
         let userDetailPresenter = UserDetailPresenter(view: detailVC, userName: userName)
         detailVC.inject(presenter: userDetailPresenter)

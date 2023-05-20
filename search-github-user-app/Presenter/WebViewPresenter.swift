@@ -9,8 +9,7 @@ import Foundation
 
 final class WebViewPresenter {
     private weak var view: WebViewOutputCollection!
-    var urlString: String = ""
-    
+    private(set) var urlString: String = ""
 
     init(view: WebViewOutputCollection, urlString: String) {
         self.view = view
