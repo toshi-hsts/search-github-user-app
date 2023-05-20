@@ -15,16 +15,41 @@ class RootViewController: UIViewController {
     @IBOutlet weak private var loadingView: LoadingView!
     @IBOutlet weak private var totalCountLabel: UILabel!
     @IBOutlet weak private var initialImageView: UIImageView!
+    @IBOutlet weak private var userSearchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+    
+    func inject(_ presenter: RootInputCollection) {
+        self.presenter = presenter
+    }
+    
+    private func setup() {
         navigationItem.backButtonTitle = "戻る"
+        
+        // キーボードに閉じるボタンをつける
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                    target: nil,
+                                    action: nil)
+        let done = UIBarButtonItem(title: "閉じる",
+                                   style: .done,
+                                   target: self,
+                                   action: #selector(tapCloseKeyboardButton))
+        toolbar.items = [space, done]
+        userSearchBar.inputAccessoryView = toolbar
+        
+        
         // setup xib
         userTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: cell)
     }
-
-    func inject(_ presenter: RootInputCollection) {
-        self.presenter = presenter
+    
+    // キーボード閉じる
+    @objc func tapCloseKeyboardButton(_ sender: UIBarButtonItem) {
+        userSearchBar.resignFirstResponder()
     }
 }
 
