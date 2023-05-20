@@ -14,10 +14,11 @@ class RootViewController: UIViewController {
     @IBOutlet weak private var userTableView: UITableView!
     @IBOutlet weak private var loadingView: LoadingView!
     @IBOutlet weak private var totalCountLabel: UILabel!
+    @IBOutlet weak private var initialImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        navigationItem.backButtonTitle = "戻る"
         // setup xib
         userTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: cell)
     }
@@ -116,6 +117,7 @@ extension RootViewController: UISearchBarDelegate {
         else { return }
 
         searchBar.resignFirstResponder()
+        initialImageView.isHidden = true
         presenter.tapSearchButton(with: searchWord)
     }
 }
