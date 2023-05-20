@@ -29,6 +29,7 @@ extension RootPresenter: RootInputCollection {
         Task {
             users = await GitHubAPIClient.shared.getUsers()
             view.tableReload()
+            view.stopAnimatingIndicator()
         }
     }
 }

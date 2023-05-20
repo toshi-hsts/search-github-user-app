@@ -24,18 +24,26 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="NNP-UR-U9E"/>
                                 </connections>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kpt-Uk-IJY" customClass="LoadingView" customModule="search_github_user_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cbA-2q-c4m" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9S8-p4-ko9"/>
                             <constraint firstItem="cbA-2q-c4m" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Q24-ZK-irI"/>
+                            <constraint firstItem="kpt-Uk-IJY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SlK-ur-AgD"/>
                             <constraint firstItem="cbA-2q-c4m" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="YYp-Ui-22e"/>
+                            <constraint firstAttribute="bottom" secondItem="kpt-Uk-IJY" secondAttribute="bottom" id="eC6-Jf-0Jp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cbA-2q-c4m" secondAttribute="bottom" id="iG0-VL-ccD"/>
+                            <constraint firstItem="kpt-Uk-IJY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jV0-Mt-oa5"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kpt-Uk-IJY" secondAttribute="trailing" id="rF3-aO-22T"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="I7Y-eB-Khf"/>
                     <connections>
+                        <outlet property="loadingView" destination="kpt-Uk-IJY" id="R3A-oG-Gzu"/>
                         <outlet property="userTableView" destination="cbA-2q-c4m" id="QM4-My-GLW"/>
                     </connections>
                 </viewController>

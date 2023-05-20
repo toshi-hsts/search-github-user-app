@@ -44,6 +44,7 @@ extension UserDetailPresenter: UserDetailInputCollection {
             async let fetchNotForkedRepositories: () = fetchNotForkedRepositories()
             let _ = await (fetchUser, fetchNotForkedRepositories)
             
+            view.stopAnimatingIndicator()
             view.loadUserInfo()
         }
     }

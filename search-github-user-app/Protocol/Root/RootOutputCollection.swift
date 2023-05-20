@@ -10,4 +10,6 @@ import Foundation
 protocol RootOutputCollection: AnyObject {
     func moveToDetail(with userName: String)
     func tableReload()
+    func startAnimatingIndicator()
+    func stopAnimatingIndicator()
 }

@@ -12,10 +12,12 @@ class RootViewController: UIViewController {
     private let cell = "userCell"
     
     @IBOutlet weak private var userTableView: UITableView!
-
+    @IBOutlet weak private var loadingView: LoadingView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // start indicator
+        startAnimatingIndicator()
         // fetch users
         presenter.getUsers()
         // setup xib
@@ -66,5 +68,20 @@ extension RootViewController: RootOutputCollection {
     /// テーブル更新
     func tableReload() {
         userTableView.reloadData()
+    }
+    
+    /// インジケーターを開始する
+    func startAnimatingIndicator() {
+        loadingView.startAnimatingIndicator()
+        loadingView.isHidden = false
+        view.isUserInteractionEnabled = false
+        navigationController?.navigationBar.isUserInteractionEnabled = false
+    }
+    /// インジケータを停止する
+    func stopAnimatingIndicator() {
+        loadingView.stopAnimatingIndicator()
+        loadingView.isHidden = true
+        view.isUserInteractionEnabled = true
+        navigationController?.navigationBar.isUserInteractionEnabled = true
     }
 }

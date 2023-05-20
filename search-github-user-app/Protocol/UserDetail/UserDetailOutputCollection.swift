@@ -9,5 +9,7 @@ import Foundation
 
 protocol UserDetailOutputCollection: AnyObject {
     func loadUserInfo() -> Void
-    func moveToDetail(with urlString: String) 
+    func moveToDetail(with urlString: String)
+    func startAnimatingIndicator()
+    func stopAnimatingIndicator()
 }
