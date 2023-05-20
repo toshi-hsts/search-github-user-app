@@ -24,7 +24,6 @@ final class UserDetailPresenter {
     
     private func fetchNotForkedRepositories() async {
         let fetchedRepositories = await GitHubAPIClient.shared.getRepositories(with: userName)
-        
         repositories = fetchedRepositories.filter { $0.isFork == false }
     }
 }
@@ -37,6 +36,7 @@ extension UserDetailPresenter: UserDetailInputCollection {
         view.moveToDetail(with: repository.htmlUrl)
     }
     
+    /// ユーザ詳細情報取得
     @MainActor
     func getUser() {
         Task {

@@ -40,8 +40,6 @@ final class Router {
                     showHandler: (_ detailVC: WebViewController) -> Void) {
         guard let webVC = UIStoryboard(name: "WebView", bundle: nil)
             .instantiateViewController(withIdentifier: "webVC") as? WebViewController else { return}
-        
-        webVC.urlString = urlString
 
         let webViewPresenter = WebViewPresenter(view: webVC, urlString: urlString)
         webVC.inject(presenter: webViewPresenter, urlString: urlString)

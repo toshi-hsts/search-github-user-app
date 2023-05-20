@@ -52,6 +52,7 @@ extension UserDetailViewController: UITableViewDelegate {
 
 // MARK: - UserDetailPresenterOutputCollection
 extension UserDetailViewController: UserDetailOutputCollection {
+    /// ユーザ情報を反映させる
     func loadUserInfo() {
         guard let user = presenter.user else { return }
         

@@ -11,10 +11,7 @@ class RootViewController: UIViewController {
     private var presenter: RootInputCollection!
     
     @IBOutlet weak private var userTableView: UITableView!
-   
-    var users: [UserWrapper] = []
-    var selectedUserName: String = ""
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,7 +60,7 @@ extension RootViewController: RootOutputCollection {
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }
-    
+    /// テーブル更新
     func tableReload() {
         userTableView.reloadData()
     }

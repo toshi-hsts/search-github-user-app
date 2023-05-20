@@ -181,8 +181,8 @@
 		CA7ADEAA2A179CA300971CD7 /* UserDetail */ = {
 			isa = PBXGroup;
 			children = (
-				CA7ADE8F2A16184700971CD7 /* UserDetail.storyboard */,
 				CA7ADE912A16186400971CD7 /* UserDetailViewController.swift */,
+				CA7ADE8F2A16184700971CD7 /* UserDetail.storyboard */,
 			);
 			path = UserDetail;
 			sourceTree = "<group>";
