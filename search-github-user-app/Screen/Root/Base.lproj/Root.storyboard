@@ -31,8 +31,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="NNP-UR-U9E"/>
                                 </connections>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="該当件数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tik-Jk-c3u">
-                                <rect key="frame" x="313" y="159" width="70" height="21"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="該当件数" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tik-Jk-c3u">
+                                <rect key="frame" x="10" y="159" width="373" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -45,6 +45,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="YDL-JR-Fk8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Bc-aF-OhF"/>
+                            <constraint firstItem="tik-Jk-c3u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="CeU-yM-2jy"/>
                             <constraint firstItem="tik-Jk-c3u" firstAttribute="top" secondItem="YDL-JR-Fk8" secondAttribute="bottom" id="QkT-4Y-1cx"/>
                             <constraint firstItem="kpt-Uk-IJY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SlK-ur-AgD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tik-Jk-c3u" secondAttribute="trailing" constant="10" id="UXe-ME-KW6"/>
