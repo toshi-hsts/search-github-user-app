@@ -87,3 +87,19 @@ extension UserDetailViewController: UserDetailOutputCollection {
         navigationController?.navigationBar.isUserInteractionEnabled = true
     }
 }
+
+// MARK: - UIScrollViewDelegate
+extension UserDetailViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // スクロールの現在位置
+        let currentContentOffsetY = repositoryTableView.contentOffset.y
+        // スクロール可能な最大位置
+        let maxContentOffsetY = repositoryTableView.contentSize.height - repositoryTableView.frame.height
+        // 現在の位置からスクロールの最下部までの距離
+        let distance = maxContentOffsetY - currentContentOffsetY
+        // 最下部から一定距離に近づいたら追加読み込みする
+        if distance < 50 {
+            presenter.approachTableViewBottom()
+        }
+    }
+}

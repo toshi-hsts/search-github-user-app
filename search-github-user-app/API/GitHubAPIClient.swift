@@ -11,9 +11,9 @@ class GitHubAPIClient {
     
     public static let shared = GitHubAPIClient()
     
-    func getUsers() async -> [UserWrapper] {
+    func getUsers(page: Int) async -> [UserWrapper] {
         // TODO: swiftという文言でクエリしてる部分を検索機能で取得した値に置き換える
-        let urlString = "https://api.github.com/search/users?q=swift"
+        let urlString = "https://api.github.com/search/users?q=swift&page=\(page)"
         var users: [UserWrapper] = []
         
         guard let url = URL(string: urlString) else {
@@ -96,8 +96,8 @@ class GitHubAPIClient {
         return user
     }
     
-    func getRepositories(with userName: String) async -> [Repository] {
-        let urlString = "https://api.github.com/users/\(userName)/repos"
+    func getRepositories(with userName: String, page: Int) async -> [Repository] {
+        let urlString = "https://api.github.com/users/\(userName)/repos?page=\(page)"
         var repositories: [Repository] = []
         
         guard let url = URL(string: urlString) else {
