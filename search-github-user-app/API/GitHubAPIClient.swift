@@ -11,12 +11,12 @@ class GitHubAPIClient {
     
     public static let shared = GitHubAPIClient()
     
-    func getUsers(keyword: String, page: Int) async -> UserSearchResult? {
+    func getUsers(keyword: String, page: Int) async throws -> UserSearchResult? {
         let urlString = "https://api.github.com/search/users?q=\(keyword)&page=\(page)"
         var searchResult: UserSearchResult?
         
         guard let url = URL(string: urlString) else {
-            fatalError()
+            throw APIError.invalidSearchWord
         }
         
         let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
@@ -31,22 +31,24 @@ class GitHubAPIClient {
         
         do {
             let (data, urlResponse) = try await URLSession.shared.data(for: request)
-            
             guard let httpStatus = urlResponse as? HTTPURLResponse else {
-                fatalError()
+                throw APIError.notStatusCode
             }
             
             switch httpStatus.statusCode {
             case 200 ..< 400:
-                searchResult  = try JSONDecoder().decode(UserSearchResult.self, from: data)
-            case 400... :
-                fatalError()
+                do {
+                    searchResult  = try JSONDecoder().decode(UserSearchResult.self, from: data)
+                } catch let error {
+                    throw APIError.decodeFailure(statusCode: httpStatus.statusCode, catchErrorText: error.localizedDescription)
+                }
+            case 400 ..< 500:
+                throw APIError.clientFailure
             default:
-                fatalError()
-                break
+                throw APIError.networkFailure
             }
-        } catch {
-            fatalError()
+        } catch let error {
+            throw APIError.noResponseData(catchErrorText: error.localizedDescription)
         }
         
         return searchResult

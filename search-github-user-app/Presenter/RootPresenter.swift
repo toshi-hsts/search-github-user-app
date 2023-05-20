@@ -37,14 +37,21 @@ extension RootPresenter: RootInputCollection {
     @MainActor
     func getUsers() {
         Task {
-            let fetchUsers = await GitHubAPIClient.shared.getUsers(keyword: searchedWord, page: page)
-            users += fetchUsers?.items ?? []
-            loadState = .standby
-            view.tableReload()
-            view.stopAnimatingIndicator()
-            
-            if page == 1 {
-                view.setTotalCount(fetchUsers?.totalCount ?? 0)
+            do {
+                let fetchUsers = try await GitHubAPIClient.shared.getUsers(keyword: searchedWord, page: page)
+                
+                users += fetchUsers?.items ?? []
+                loadState = .standby
+                view.tableReload()
+                view.stopAnimatingIndicator()
+                
+                if page == 1 {
+                    view.setTotalCount(fetchUsers?.totalCount ?? 0)
+                }
+            } catch let error as APIError {
+                loadState = .standby
+                view.stopAnimatingIndicator()
+                view.showErrorAlert(with: error.alertMessage)
             }
         }
     }
@@ -63,11 +70,17 @@ extension RootPresenter: RootInputCollection {
     ///　検索ボタンが押された際の処理
     @MainActor
     func tapSearchButton(with searchWord: String) {
+        searchedWord = searchWord
+        getFirstPageUsers()
+    }
+    
+    /// 1 page目のユーザを取得
+    @MainActor
+    func getFirstPageUsers() {
         view.startAnimatingIndicator()
         page = 1
         users = []
         loadState = .loading
-        searchedWord = searchWord
         getUsers()
     }
 }
