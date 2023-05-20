@@ -68,13 +68,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="of5-iK-Fsl" customClass="LoadingView" customModule="search_github_user_app" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="of5-iK-Fsl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0Zm-GI-uQa"/>
                             <constraint firstItem="2mf-wp-f9o" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2kJ-Jm-tFP"/>
                             <constraint firstItem="2mf-wp-f9o" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" id="4nY-zD-V5b"/>
                             <constraint firstAttribute="bottom" secondItem="2mf-wp-f9o" secondAttribute="bottom" id="5bl-rn-e8L"/>
+                            <constraint firstAttribute="bottom" secondItem="of5-iK-Fsl" secondAttribute="bottom" id="BLD-Na-hEC"/>
                             <constraint firstItem="DP7-b5-RRq" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="15" id="Isb-dJ-W2G"/>
                             <constraint firstItem="rHM-NK-N9k" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="KAQ-kz-ke4"/>
                             <constraint firstItem="2mf-wp-f9o" firstAttribute="top" secondItem="rHM-NK-N9k" secondAttribute="bottom" constant="5" id="MMz-Mr-Mp1"/>
@@ -87,10 +92,13 @@
                             <constraint firstItem="rHM-NK-N9k" firstAttribute="top" secondItem="FO5-iF-CW6" secondAttribute="bottom" constant="10" id="iBY-Yg-yfQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rHM-NK-N9k" secondAttribute="trailing" constant="20" id="m0B-9L-J0j"/>
                             <constraint firstItem="FO5-iF-CW6" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="tyO-ld-B9G"/>
+                            <constraint firstItem="of5-iK-Fsl" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="weE-bq-mJm"/>
+                            <constraint firstItem="of5-iK-Fsl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="zSM-ho-TNG"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="iconImageView" destination="DP7-b5-RRq" id="VN6-5I-Qzh"/>
+                        <outlet property="loadingView" destination="of5-iK-Fsl" id="o0x-6F-dva"/>
                         <outlet property="profileLabel" destination="FO5-iF-CW6" id="zsW-4N-vCE"/>
                         <outlet property="repositoryListTitleLabel" destination="rHM-NK-N9k" id="4Fp-Mf-8Wy"/>
                         <outlet property="repositoryTableView" destination="2mf-wp-f9o" id="gU6-B7-j7f"/>

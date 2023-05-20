@@ -19,6 +19,8 @@
 		CA4665412A15FF57002683E3 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665402A15FF57002683E3 /* Env.swift */; };
 		CA4665442A160371002683E3 /* UserSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665432A160371002683E3 /* UserSearchResult.swift */; };
 		CA4665462A16038B002683E3 /* UserWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4665452A16038A002683E3 /* UserWrapper.swift */; };
+		CA6B18402A18C38D00163B7F /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA6B183F2A18C38D00163B7F /* LoadingView.xib */; };
+		CA6B18422A18C3D800163B7F /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6B18412A18C3D800163B7F /* LoadingView.swift */; };
 		CA7ADE902A16184700971CD7 /* UserDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA7ADE8F2A16184700971CD7 /* UserDetail.storyboard */; };
 		CA7ADE922A16186400971CD7 /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE912A16186400971CD7 /* UserDetailViewController.swift */; };
 		CA7ADE952A16423600971CD7 /* UIImageView+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */; };
@@ -56,6 +58,8 @@
 		CA4665402A15FF57002683E3 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		CA4665432A160371002683E3 /* UserSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchResult.swift; sourceTree = "<group>"; };
 		CA4665452A16038A002683E3 /* UserWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWrapper.swift; sourceTree = "<group>"; };
+		CA6B183F2A18C38D00163B7F /* LoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		CA6B18412A18C3D800163B7F /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		CA7ADE8F2A16184700971CD7 /* UserDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetail.storyboard; sourceTree = "<group>"; };
 		CA7ADE912A16186400971CD7 /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		CA7ADE942A16423600971CD7 /* UIImageView+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Utility.swift"; sourceTree = "<group>"; };
@@ -156,6 +160,23 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
+		CA6B183D2A18C36500163B7F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CA6B183E2A18C37300163B7F /* LoadingView */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CA6B183E2A18C37300163B7F /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				CA6B183F2A18C38D00163B7F /* LoadingView.xib */,
+				CA6B18412A18C3D800163B7F /* LoadingView.swift */,
+			);
+			path = LoadingView;
+			sourceTree = "<group>";
+		};
 		CA7ADE932A1641F000971CD7 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +196,7 @@
 		CA7ADEA82A179C6E00971CD7 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				CA6B183D2A18C36500163B7F /* Utils */,
 				CA7ADEAB2A179CB700971CD7 /* Root */,
 				CA7ADEAA2A179CA300971CD7 /* UserDetail */,
 				CA7ADEA92A179C9600971CD7 /* WebView */,
@@ -341,6 +363,7 @@
 				CA4665322A1547E8002683E3 /* Assets.xcassets in Resources */,
 				CA7ADE902A16184700971CD7 /* UserDetail.storyboard in Resources */,
 				CA4665302A1547E7002683E3 /* Root.storyboard in Resources */,
+				CA6B18402A18C38D00163B7F /* LoadingView.xib in Resources */,
 				CA33703E2A18B5B800209551 /* UserTableViewCell.xib in Resources */,
 				CA7ADEA42A179AC500971CD7 /* WebView.storyboard in Resources */,
 			);
@@ -371,6 +394,7 @@
 				CA4665292A1547E7002683E3 /* AppDelegate.swift in Sources */,
 				CA46652B2A1547E7002683E3 /* SceneDelegate.swift in Sources */,
 				CA7ADE9A2A164CD300971CD7 /* User.swift in Sources */,
+				CA6B18422A18C3D800163B7F /* LoadingView.swift in Sources */,
 				CA7ADEDE2A189DC400971CD7 /* WebViewPresenter.swift in Sources */,
 				CA7ADEDC2A18097D00971CD7 /* UserDetailOutputCollection.swift in Sources */,
 				CA7ADED52A17FB7A00971CD7 /* RootInputCollection.swift in Sources */,
