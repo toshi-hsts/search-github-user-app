@@ -81,9 +81,7 @@ class GitHubAPIClient {
             
             switch httpStatus.statusCode {
             case 200 ..< 400:
-                print("koko")
                 let searchResult  = try JSONDecoder().decode(User.self, from: data)
-                print(searchResult)
                 user = searchResult
             case 400... :
                 fatalError()
@@ -125,9 +123,7 @@ class GitHubAPIClient {
             
             switch httpStatus.statusCode {
             case 200 ..< 400:
-                print("koko")
                 let searchResult  = try JSONDecoder().decode(RepositorySearchResult.self, from: data)
-                print(searchResult)
                 repositories = searchResult.repositories
             case 400... :
                 fatalError()
