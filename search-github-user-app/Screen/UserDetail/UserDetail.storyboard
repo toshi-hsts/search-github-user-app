@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="profile" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FO5-iF-CW6" userLabel="Profile Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FO5-iF-CW6" userLabel="Profile Label">
                                 <rect key="frame" x="20" y="290.66666666666669" width="353" height="181.66666666666669"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -62,7 +62,7 @@
                                     <constraint firstAttribute="width" secondItem="DP7-b5-RRq" secondAttribute="height" multiplier="1:1" id="IYP-Rd-UQr"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="🔹リポジトリ一覧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-NK-N9k">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text=" 🔹リポジトリ一覧🔹" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rHM-NK-N9k">
                                 <rect key="frame" x="20" y="482.33333333333331" width="353" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -92,6 +92,7 @@
                     <connections>
                         <outlet property="iconImageView" destination="DP7-b5-RRq" id="VN6-5I-Qzh"/>
                         <outlet property="profileLabel" destination="FO5-iF-CW6" id="zsW-4N-vCE"/>
+                        <outlet property="repositoryListTitleLabel" destination="rHM-NK-N9k" id="4Fp-Mf-8Wy"/>
                         <outlet property="repositoryTableView" destination="2mf-wp-f9o" id="gU6-B7-j7f"/>
                     </connections>
                 </viewController>

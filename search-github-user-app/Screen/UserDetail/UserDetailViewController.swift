@@ -13,6 +13,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak private var iconImageView: UIImageView!
     @IBOutlet weak private var profileLabel: UILabel!
     @IBOutlet weak private var repositoryTableView: UITableView!
+    @IBOutlet weak private var repositoryListTitleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +59,7 @@ extension UserDetailViewController: UserDetailOutputCollection {
         
         iconImageView.setImage(with: URL(string: user.avatarUrl))
         profileLabel.text = "ユーザ名: \(user.name)\nフルネーム: \(user.fullName ?? "登録なし")\nフォロワー数: \(user.followers)\nフォロー数: \(user.following)\n自己紹介: \(user.bio ?? "登録なし")"
-        
+        repositoryListTitleLabel.isHidden = false
         repositoryTableView.reloadData()
     }
     
