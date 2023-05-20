@@ -9,6 +9,7 @@ import UIKit
 
 class RootViewController: UIViewController {
     private var presenter: RootInputCollection!
+    private let cell = "userCell"
     
     @IBOutlet weak private var userTableView: UITableView!
 
@@ -17,6 +18,8 @@ class RootViewController: UIViewController {
         
         // fetch users
         presenter.getUsers()
+        // setup xib
+        userTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: cell)
     }
 
     func inject(_ presenter: RootInputCollection) {
@@ -33,11 +36,11 @@ extension RootViewController: UITableViewDataSource {
     
     // セル設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let imageUrl = URL(string: presenter.users[indexPath.row].avatarUrl)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cell, for: indexPath) as! UserTableViewCell
+        let name = presenter.users[indexPath.row].name
+        let imageUrlString = presenter.users[indexPath.row].avatarUrl
         
-        cell.textLabel?.text = presenter.users[indexPath.row].name
-        cell.imageView?.setImage(with: imageUrl)
+        cell.setup(name: name, iconUrl: imageUrlString)
         
         return cell
     }
