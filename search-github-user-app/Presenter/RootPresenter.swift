@@ -49,6 +49,7 @@ extension RootPresenter: RootInputCollection {
                     view.setTotalCount(fetchUsers?.totalCount ?? 0)
                 }
             } catch let error as APIError {
+                print("error: \(error.description)")
                 loadState = .standby
                 view.stopAnimatingIndicator()
                 view.showErrorAlert(with: error.alertMessage)
