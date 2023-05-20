@@ -8,7 +8,10 @@
 import Foundation
 
 class GitHubAPIClient {
-    func getUsers() async throws -> [UserWrapper] {
+    
+    public static let shared = GitHubAPIClient()
+    
+    func getUsers() async -> [UserWrapper] {
         // TODO: swiftという文言でクエリしてる部分を検索機能で取得した値に置き換える
         let urlString = "https://api.github.com/search/users?q=swift"
         var users: [UserWrapper] = []

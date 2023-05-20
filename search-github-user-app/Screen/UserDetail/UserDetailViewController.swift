@@ -8,11 +8,7 @@
 import UIKit
 
 class UserDetailViewController: UIViewController {
-    var userName: String = ""
-    let githubAPIClient = GitHubAPIClient()
-    var user: User?
-    var repositories: [Repository] = []
-    var selectedRepositoryUrl: String = ""
+    private var presenter: UserDetailInputCollection!
     
     @IBOutlet weak private var iconImageView: UIImageView!
     @IBOutlet weak private var profileLabel: UILabel!
@@ -20,55 +16,26 @@ class UserDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Task {
-            async let fetchUser: () =  fetchUser()
-            async let fetchNotForkedRepositories: () = fetchNotForkedRepositories()
-            let _ = await (fetchUser, fetchNotForkedRepositories)
-            
-            await loadInfo()
-        }
+        presenter.getUser()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toWebView" {
-            let webVC = segue.destination as! WebViewController
-            webVC.urlString = selectedRepositoryUrl
-        }
-    }
-    
-    private func fetchUser() async {
-        user = await githubAPIClient.getUser(with: userName)
-    }
-    
-    private func fetchNotForkedRepositories() async {
-        let fetchedRepositories = await githubAPIClient.getRepositories(with: userName)
-        
-        repositories = fetchedRepositories.filter { $0.isFork == false }
-    }
-    
-    private func loadInfo() async {
-        guard let user else { return }
-        
-        iconImageView.setImage(with: URL(string: user.avatarUrl))
-        profileLabel.text = "ユーザ名: \(user.name)\nフルネーム: \(user.fullName ?? "登録なし")\nフォロワー数: \(user.followers)\nフォロー数: \(user.following)\n自己紹介: \(user.bio ?? "登録なし")"
-        
-        repositoryTableView.reloadData()
+    func inject(presenter: UserDetailInputCollection) {
+        self.presenter = presenter
     }
 }
 
 // MARK: - UITableViewDataSource
 extension UserDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repositories.count
+        return presenter.repositories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath)
-        let repo = repositories[indexPath.row]
+        let repo = presenter.repositories[indexPath.row]
         
         cell.textLabel?.text = "\(repo.name) / 言語：\(repo.language) / ⭐️\(repo.stargazersCount)"
-        cell.detailTextLabel?.text = repositories[indexPath.row].description
+        cell.detailTextLabel?.text = presenter.repositories[indexPath.row].description
         
         return cell
     }
@@ -79,7 +46,26 @@ extension UserDetailViewController: UITableViewDelegate {
     // セルタップ時に呼ばれる
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedRepositoryUrl = repositories[indexPath.row].htmlUrl
-        performSegue(withIdentifier: "toWebView", sender: nil)
+        presenter.tapTableViewCell(at: indexPath.row)
+    }
+}
+
+// MARK: - UserDetailPresenterOutputCollection
+extension UserDetailViewController: UserDetailOutputCollection {
+    /// ユーザ情報を反映させる
+    func loadUserInfo() {
+        guard let user = presenter.user else { return }
+        
+        iconImageView.setImage(with: URL(string: user.avatarUrl))
+        profileLabel.text = "ユーザ名: \(user.name)\nフルネーム: \(user.fullName ?? "登録なし")\nフォロワー数: \(user.followers)\nフォロー数: \(user.following)\n自己紹介: \(user.bio ?? "登録なし")"
+        
+        repositoryTableView.reloadData()
+    }
+    
+    /// 詳細画面に移動する
+    func moveToDetail(with urlString: String) {
+        Router.shared.showWebView(with: urlString) { webVC in
+            navigationController?.pushViewController(webVC, animated: true)
+        }
     }
 }
