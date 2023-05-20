@@ -8,10 +8,18 @@
 import Foundation
 
 final class UserDetailPresenter {
+    enum LoadState {
+        case standby
+        case loading
+        case none
+    }
+    
     private weak var view: UserDetailOutputCollection!
     private(set) var userName: String = ""
     private(set) var user: User?
     private(set) var repositories: [Repository] = []
+    private var loadState: LoadState = .none
+    private var page = 1
 
     init(view: UserDetailOutputCollection, userName: String) {
         self.view = view
@@ -23,8 +31,9 @@ final class UserDetailPresenter {
     }
     
     private func fetchNotForkedRepositories() async {
-        let fetchedRepositories = await GitHubAPIClient.shared.getRepositories(with: userName)
-        repositories = fetchedRepositories.filter { $0.isFork == false }
+        let fetchedRepositories = await GitHubAPIClient.shared.getRepositories(with: userName, page: page)
+        repositories += fetchedRepositories.filter { $0.isFork == false }
+        loadState = .standby
     }
 }
 
@@ -43,6 +52,23 @@ extension UserDetailPresenter: UserDetailInputCollection {
             async let fetchUser: () =  fetchUser()
             async let fetchNotForkedRepositories: () = fetchNotForkedRepositories()
             let _ = await (fetchUser, fetchNotForkedRepositories)
+            
+            view.stopAnimatingIndicator()
+            view.loadUserInfo()
+        }
+    }
+    
+    /// TableViewが下部に近づいた際の処理
+    @MainActor
+    func approachTableViewBottom() {
+        guard loadState == .standby else { return }
+
+        view.startAnimatingIndicator()
+        loadState = .loading
+        page += 1
+        
+        Task {
+            await fetchNotForkedRepositories()
             
             view.stopAnimatingIndicator()
             view.loadUserInfo()

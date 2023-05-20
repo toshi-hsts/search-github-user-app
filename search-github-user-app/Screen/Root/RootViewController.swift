@@ -85,3 +85,20 @@ extension RootViewController: RootOutputCollection {
         navigationController?.navigationBar.isUserInteractionEnabled = true
     }
 }
+
+
+// MARK: - UIScrollViewDelegate
+extension RootViewController {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // スクロールの現在位置
+        let currentContentOffsetY = userTableView.contentOffset.y
+        // スクロール可能な最大位置
+        let maxContentOffsetY = userTableView.contentSize.height - userTableView.frame.height
+        // 現在の位置からスクロールの最下部までの距離
+        let distance = maxContentOffsetY - currentContentOffsetY
+        // 最下部から一定距離に近づいたら追加読み込みする
+        if distance < 50 {
+            presenter.approachTableViewBottom()
+        }
+    }
+}

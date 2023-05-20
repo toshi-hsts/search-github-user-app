@@ -11,4 +11,5 @@ protocol RootInputCollection: AnyObject {
     var users: [UserWrapper] { get }
     func tapTableViewCell(at index: Int)
     func getUsers()
+    func approachTableViewBottom()
 }
