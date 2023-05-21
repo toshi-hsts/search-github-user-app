@@ -24,7 +24,7 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="40" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cbA-2q-c4m">
-                                <rect key="frame" x="0.0" y="169" width="393" height="649"/>
+                                <rect key="frame" x="0.0" y="189.33333333333331" width="393" height="628.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="4Sb-AD-gca"/>
@@ -32,7 +32,7 @@
                                 </connections>
                             </tableView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="該当件数" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tik-Jk-c3u">
-                                <rect key="frame" x="10" y="159" width="373" height="0.0"/>
+                                <rect key="frame" x="10" y="159" width="373" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" image="octcat_message" translatesAutoresizingMaskIntoConstraints="NO" id="XIy-Yo-DSf">
-                                <rect key="frame" x="0.0" y="189" width="393" height="629"/>
+                                <rect key="frame" x="0.0" y="108" width="393" height="710"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -51,11 +51,11 @@
                             <constraint firstItem="YDL-JR-Fk8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="8Bc-aF-OhF"/>
                             <constraint firstItem="tik-Jk-c3u" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="CeU-yM-2jy"/>
                             <constraint firstItem="XIy-Yo-DSf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EDz-Ya-YPj"/>
-                            <constraint firstItem="XIy-Yo-DSf" firstAttribute="top" secondItem="tik-Jk-c3u" secondAttribute="bottom" constant="30" id="H2d-NA-sXl"/>
                             <constraint firstItem="tik-Jk-c3u" firstAttribute="top" secondItem="YDL-JR-Fk8" secondAttribute="bottom" id="QkT-4Y-1cx"/>
                             <constraint firstItem="kpt-Uk-IJY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SlK-ur-AgD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tik-Jk-c3u" secondAttribute="trailing" constant="10" id="UXe-ME-KW6"/>
                             <constraint firstItem="YDL-JR-Fk8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WxU-Kz-Y8C"/>
+                            <constraint firstItem="XIy-Yo-DSf" firstAttribute="height" secondItem="cbA-2q-c4m" secondAttribute="height" multiplier="1.12937" id="Xxq-We-iZy"/>
                             <constraint firstItem="cbA-2q-c4m" firstAttribute="top" secondItem="tik-Jk-c3u" secondAttribute="bottom" constant="10" id="bad-gQ-erM"/>
                             <constraint firstAttribute="bottom" secondItem="kpt-Uk-IJY" secondAttribute="bottom" id="eC6-Jf-0Jp"/>
                             <constraint firstItem="kpt-Uk-IJY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="jV0-Mt-oa5"/>
