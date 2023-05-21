@@ -12,4 +12,5 @@ protocol UserDetailOutputCollection: AnyObject {
     func moveToDetail(with urlString: String)
     func startAnimatingIndicator()
     func stopAnimatingIndicator()
+    func showErrorAlert(with message: String)
 }

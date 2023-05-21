@@ -54,12 +54,12 @@ class GitHubAPIClient {
         return searchResult
     }
     
-    func getUser(with name: String) async -> User? {
+    func getUser(with name: String) async throws -> User? {
         let urlString = "https://api.github.com/users/\(name)"
         var user: User?
         
         guard let url = URL(string: urlString) else {
-            fatalError()
+            throw APIError.invalidSearchWord
         }
         
         let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
@@ -76,32 +76,35 @@ class GitHubAPIClient {
             let (data, urlResponse) = try await URLSession.shared.data(for: request)
             
             guard let httpStatus = urlResponse as? HTTPURLResponse else {
-                fatalError()
+                throw APIError.notStatusCode
             }
             
             switch httpStatus.statusCode {
             case 200 ..< 400:
-                let searchResult  = try JSONDecoder().decode(User.self, from: data)
-                user = searchResult
-            case 400... :
-                fatalError()
+                do {
+                    let searchResult  = try JSONDecoder().decode(User.self, from: data)
+                    user = searchResult
+                } catch let error {
+                    throw APIError.decodeFailure(statusCode: httpStatus.statusCode, catchErrorText: error.localizedDescription)
+                }
+            case 400 ..< 500:
+                throw APIError.clientFailure
             default:
-                fatalError()
-                break
+                throw APIError.networkFailure
             }
-        } catch {
-            fatalError()
+        } catch let error {
+            throw APIError.noResponseData(catchErrorText: error.localizedDescription)
         }
         
         return user
     }
     
-    func getRepositories(with userName: String, page: Int) async -> [Repository] {
+    func getRepositories(with userName: String, page: Int) async throws -> [Repository] {
         let urlString = "https://api.github.com/users/\(userName)/repos?page=\(page)"
         var repositories: [Repository] = []
         
         guard let url = URL(string: urlString) else {
-            fatalError()
+            throw APIError.invalidSearchWord
         }
         
         let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
@@ -118,21 +121,24 @@ class GitHubAPIClient {
             let (data, urlResponse) = try await URLSession.shared.data(for: request)
             
             guard let httpStatus = urlResponse as? HTTPURLResponse else {
-                fatalError()
+                throw APIError.notStatusCode
             }
             
             switch httpStatus.statusCode {
             case 200 ..< 400:
-                let searchResult  = try JSONDecoder().decode(RepositorySearchResult.self, from: data)
-                repositories = searchResult.repositories
-            case 400... :
-                fatalError()
+                do {
+                    let searchResult  = try JSONDecoder().decode(RepositorySearchResult.self, from: data)
+                    repositories = searchResult.repositories
+                } catch let error {
+                    throw APIError.decodeFailure(statusCode: httpStatus.statusCode, catchErrorText: error.localizedDescription)
+                }
+            case 400 ..< 500 :
+                throw APIError.clientFailure
             default:
-                fatalError()
-                break
+                throw APIError.networkFailure
             }
-        } catch {
-            fatalError()
+        } catch let error {
+            throw APIError.noResponseData(catchErrorText: error.localizedDescription)
         }
         
         return repositories

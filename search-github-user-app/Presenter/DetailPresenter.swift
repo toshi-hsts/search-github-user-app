@@ -26,12 +26,12 @@ final class UserDetailPresenter {
         self.userName = userName
     }
     
-    private func fetchUser() async {
-        user = await GitHubAPIClient.shared.getUser(with: userName)
+    private func fetchUser() async throws {
+        user = try await GitHubAPIClient.shared.getUser(with: userName)
     }
     
-    private func fetchNotForkedRepositories() async {
-        let fetchedRepositories = await GitHubAPIClient.shared.getRepositories(with: userName, page: page)
+    private func fetchNotForkedRepositories() async throws {
+        let fetchedRepositories = try await GitHubAPIClient.shared.getRepositories(with: userName, page: page)
         repositories += fetchedRepositories.filter { $0.isFork == false }
         loadState = .standby
     }
@@ -49,12 +49,18 @@ extension UserDetailPresenter: UserDetailInputCollection {
     @MainActor
     func getUser() {
         Task {
-            async let fetchUser: () =  fetchUser()
-            async let fetchNotForkedRepositories: () = fetchNotForkedRepositories()
-            let _ = await (fetchUser, fetchNotForkedRepositories)
-            
-            view.stopAnimatingIndicator()
-            view.loadUserInfo()
+            do {
+                async let fetchUser: () =  fetchUser()
+                async let fetchNotForkedRepositories: () = fetchNotForkedRepositories()
+                let _ = try await (fetchUser, fetchNotForkedRepositories)
+                
+                view.stopAnimatingIndicator()
+                view.loadUserInfo()
+            } catch let error as APIError {
+                print("error: \(error.description)")
+                view.stopAnimatingIndicator()
+                view.showErrorAlert(with: error.alertMessage)
+            }
         }
     }
     
@@ -68,10 +74,16 @@ extension UserDetailPresenter: UserDetailInputCollection {
         page += 1
         
         Task {
-            await fetchNotForkedRepositories()
-            
-            view.stopAnimatingIndicator()
-            view.loadUserInfo()
+            do {
+                try await fetchNotForkedRepositories()
+                
+                view.stopAnimatingIndicator()
+                view.loadUserInfo()
+            } catch let error as APIError {
+                print("error: \(error.description)")
+                view.stopAnimatingIndicator()
+                view.showErrorAlert(with: error.alertMessage)
+            }
         }
     }
 }

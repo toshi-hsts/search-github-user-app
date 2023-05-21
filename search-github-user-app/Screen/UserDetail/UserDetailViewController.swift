@@ -66,14 +66,12 @@ extension UserDetailViewController: UserDetailOutputCollection {
         repositoryListTitleLabel.isHidden = false
         repositoryTableView.reloadData()
     }
-    
     /// 詳細画面に移動する
     func moveToDetail(with urlString: String) {
         Router.shared.showWebView(with: urlString) { webVC in
             navigationController?.pushViewController(webVC, animated: true)
         }
     }
-    
     /// インジケーターを開始する
     func startAnimatingIndicator() {
         loadingView.startAnimatingIndicator()
@@ -87,6 +85,17 @@ extension UserDetailViewController: UserDetailOutputCollection {
         loadingView.isHidden = true
         view.isUserInteractionEnabled = true
         navigationController?.navigationBar.isUserInteractionEnabled = true
+    }
+    /// エラー時のアラートを表示する
+    func showErrorAlert(with message: String) {
+        let alert = UIAlertController(title: "エラー",
+                                      message: message,
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "再読み込み", style: .default, handler: { _ in
+            self.presenter.getUser()
+        }))
+        present(alert, animated: true)
     }
 }
 
