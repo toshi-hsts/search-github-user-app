@@ -8,4 +8,5 @@
 import Foundation
 
 protocol WebViewOutputCollection: AnyObject {
+    func showErrorAlert(with message: String)
 }

@@ -13,4 +13,5 @@ protocol RootOutputCollection: AnyObject {
     func setTotalCount(_ totalCount: Int)
     func startAnimatingIndicator()
     func stopAnimatingIndicator()
+    func showErrorAlert(with message: String)
 }

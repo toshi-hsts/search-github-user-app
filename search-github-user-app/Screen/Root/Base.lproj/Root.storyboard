@@ -72,6 +72,7 @@
                         <outlet property="initialImageView" destination="XIy-Yo-DSf" id="Vew-xB-1Sf"/>
                         <outlet property="loadingView" destination="kpt-Uk-IJY" id="R3A-oG-Gzu"/>
                         <outlet property="totalCountLabel" destination="tik-Jk-c3u" id="IJu-nQ-sot"/>
+                        <outlet property="userSearchBar" destination="YDL-JR-Fk8" id="ArR-eb-SSF"/>
                         <outlet property="userTableView" destination="cbA-2q-c4m" id="QM4-My-GLW"/>
                     </connections>
                 </viewController>
