@@ -38,7 +38,7 @@ Xcode 14.3
 - エラー捕捉時はアラートを表示
 
 ## 操作動画
-![demo](https://github.com/toshi-hsts/search-github-user-app/assets/80573353/5f3d780f-a600-4f03-8c56-da6492552272)
+![demo](https://github.com/toshi-hsts/search-github-user-app/assets/80573353/731cda6f-9879-41bb-a6e1-89ce23254dc3)
 
 ## アラート画面
 <img src="https://github.com/toshi-hsts/search-github-user-app/assets/80573353/e9d2a244-ff8c-431a-bd4d-868f5e328ee6" width=260>
