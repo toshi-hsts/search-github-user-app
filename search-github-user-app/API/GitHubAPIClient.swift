@@ -10,6 +10,12 @@ import Foundation
 class GitHubAPIClient {
     
     public static let shared = GitHubAPIClient()
+
+    let apiVersion = "2022-11-28"
+    let accept = "application/vnd.github+json"
+    let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
+    
+    
     
     func getUsers(keyword: String, page: Int) async throws -> UserSearchResult? {
         let urlString = "https://api.github.com/search/users?q=\(keyword)&page=\(page)"
@@ -19,13 +25,12 @@ class GitHubAPIClient {
             throw APIError.invalidSearchWord
         }
         
-        let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         // ヘッダ情報付与
         request.allHTTPHeaderFields = [
-            "X-GitHub-Api-Version" : "2022-11-28",
-            "Accept" : "application/vnd.github+json",
+            "X-GitHub-Api-Version" : apiVersion,
+            "Accept" : accept,
             "Authorization" : authorization
         ]
         
@@ -62,13 +67,12 @@ class GitHubAPIClient {
             throw APIError.invalidSearchWord
         }
         
-        let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         // ヘッダ情報付与
         request.allHTTPHeaderFields = [
-            "X-GitHub-Api-Version" : "2022-11-28",
-            "Accept" : "application/vnd.github+json",
+            "X-GitHub-Api-Version" : apiVersion,
+            "Accept" : accept,
             "Authorization" : authorization
         ]
         
@@ -107,13 +111,12 @@ class GitHubAPIClient {
             throw APIError.invalidSearchWord
         }
         
-        let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         // ヘッダ情報付与
         request.allHTTPHeaderFields = [
-            "X-GitHub-Api-Version" : "2022-11-28",
-            "Accept" : "application/vnd.github+json",
+            "X-GitHub-Api-Version" : apiVersion,
+            "Accept" : accept,
             "Authorization" : authorization
         ]
         
