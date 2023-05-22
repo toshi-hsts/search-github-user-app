@@ -63,11 +63,12 @@ extension RootViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cell, for: indexPath) as? UserTableViewCell
         let name = presenter.users[indexPath.row].name
+        let type = presenter.users[indexPath.row].type
         let imageUrlString = presenter.users[indexPath.row].avatarUrl
 
         guard let cell else { return UITableViewCell() }
 
-        cell.setup(name: name, iconUrl: imageUrlString)
+        cell.setup(name: name, type: type, iconUrl: imageUrlString)
 
         return cell
     }
