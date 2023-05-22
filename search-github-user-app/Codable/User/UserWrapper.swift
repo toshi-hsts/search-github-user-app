@@ -9,11 +9,13 @@ import Foundation
 
 struct UserWrapper: Decodable {
     let name: String
+    let type: String
     let avatarUrl: String
     let userInfoUrl: String
-    
+
     enum CodingKeys: String, CodingKey {
         case name = "login"
+        case type = "type"
         case avatarUrl = "avatar_url"
         case userInfoUrl = "url"
     }

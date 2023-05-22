@@ -10,25 +10,25 @@ import UIKit
 class RootViewController: UIViewController {
     private var presenter: RootInputCollection!
     private let cell = "userCell"
-    
+
     @IBOutlet weak private var userTableView: UITableView!
     @IBOutlet weak private var loadingView: LoadingView!
     @IBOutlet weak private var totalCountLabel: UILabel!
     @IBOutlet weak private var initialImageView: UIImageView!
     @IBOutlet weak private var userSearchBar: UISearchBar!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
-    
+
     func inject(_ presenter: RootInputCollection) {
         self.presenter = presenter
     }
-    
+
     private func setup() {
         navigationItem.backButtonTitle = "戻る"
-        
+
         // キーボードに閉じるボタンをつける
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -41,12 +41,11 @@ class RootViewController: UIViewController {
                                    action: #selector(tapCloseKeyboardButton))
         toolbar.items = [space, done]
         userSearchBar.inputAccessoryView = toolbar
-        
-        
+
         // setup xib
         userTableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: cell)
     }
-    
+
     // キーボード閉じる
     @objc func tapCloseKeyboardButton(_ sender: UIBarButtonItem) {
         userSearchBar.resignFirstResponder()
@@ -59,15 +58,18 @@ extension RootViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.users.count
     }
-    
+
     // セル設定
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cell, for: indexPath) as! UserTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cell, for: indexPath) as? UserTableViewCell
         let name = presenter.users[indexPath.row].name
+        let type = presenter.users[indexPath.row].type
         let imageUrlString = presenter.users[indexPath.row].avatarUrl
-        
-        cell.setup(name: name, iconUrl: imageUrlString)
-        
+
+        guard let cell else { return UITableViewCell() }
+
+        cell.setup(name: name, type: type, iconUrl: imageUrlString)
+
         return cell
     }
 }
@@ -93,13 +95,13 @@ extension RootViewController: RootOutputCollection {
     func tableReload() {
         userTableView.reloadData()
     }
-    
+
     /// total件数
     func setTotalCount(_ totalCount: Int) {
         totalCountLabel.text = "該当件数：\(totalCount.addComma())"
         totalCountLabel.isHidden = false
     }
-    
+
     /// インジケーターを開始する
     func startAnimatingIndicator() {
         loadingView.startAnimatingIndicator()
@@ -114,7 +116,7 @@ extension RootViewController: RootOutputCollection {
         view.isUserInteractionEnabled = true
         navigationController?.navigationBar.isUserInteractionEnabled = true
     }
-    
+
     /// エラー時のアラートを表示する
     func showErrorAlert(with message: String) {
         let alert = UIAlertController(title: "エラー",
@@ -127,7 +129,6 @@ extension RootViewController: RootOutputCollection {
         present(alert, animated: true)
     }
 }
-
 
 // MARK: - UIScrollViewDelegate
 extension RootViewController {

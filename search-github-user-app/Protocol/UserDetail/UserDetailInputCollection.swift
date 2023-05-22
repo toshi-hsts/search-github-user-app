@@ -11,6 +11,7 @@ protocol UserDetailInputCollection: AnyObject {
     var user: User? { get }
     var repositories: [Repository] { get }
     func tapTableViewCell(at index: Int)
+    func handleNoRepository()
     func getUser()
     func approachTableViewBottom()
 }

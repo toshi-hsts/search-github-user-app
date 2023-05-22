@@ -13,27 +13,41 @@ final class UserDetailPresenter {
         case loading
         case none
     }
-    
+
     private weak var view: UserDetailOutputCollection!
+    private weak var githubAPIClient: GitHubAPIClientCollection!
     private(set) var userName: String = ""
     private(set) var user: User?
     private(set) var repositories: [Repository] = []
     private var loadState: LoadState = .none
     private var page = 1
+    private var lastPage = 1
 
-    init(view: UserDetailOutputCollection, userName: String) {
+    init(view: UserDetailOutputCollection,
+         apiClient: GitHubAPIClientCollection,
+         userName: String) {
         self.view = view
+        self.githubAPIClient = apiClient
         self.userName = userName
     }
-    
+
     private func fetchUser() async throws {
-        user = try await GitHubAPIClient.shared.getUser(with: userName)
+        user = try await githubAPIClient.getUser(with: userName)
     }
-    
+
     private func fetchNotForkedRepositories() async throws {
-        let fetchedRepositories = try await GitHubAPIClient.shared.getRepositories(with: userName, page: page)
-        repositories += fetchedRepositories.filter { $0.isFork == false }
+        let fetchedWrapperRepositories = try await githubAPIClient.getRepositories(with: userName, page: page)
+
+        if let lastPage = fetchedWrapperRepositories.lastPage {
+            self.lastPage = lastPage
+        }
+
+        repositories += fetchedWrapperRepositories.repositories.filter { $0.isFork == false }
         loadState = .standby
+
+        if repositories.isEmpty {
+            await handleNoRepository()
+        }
     }
 }
 
@@ -44,7 +58,11 @@ extension UserDetailPresenter: UserDetailInputCollection {
         let repository = repositories[index]
         view.moveToDetail(with: repository.htmlUrl)
     }
-    
+    /// リポジトリ0件のとき
+    @MainActor
+    func handleNoRepository() {
+        view.showNoResultView()
+    }
     /// ユーザ詳細情報取得
     @MainActor
     func getUser() {
@@ -52,8 +70,8 @@ extension UserDetailPresenter: UserDetailInputCollection {
             do {
                 async let fetchUser: () =  fetchUser()
                 async let fetchNotForkedRepositories: () = fetchNotForkedRepositories()
-                let _ = try await (fetchUser, fetchNotForkedRepositories)
-                
+                _ = try await (fetchUser, fetchNotForkedRepositories)
+
                 view.stopAnimatingIndicator()
                 view.loadUserInfo()
             } catch let error as APIError {
@@ -63,20 +81,20 @@ extension UserDetailPresenter: UserDetailInputCollection {
             }
         }
     }
-    
     /// TableViewが下部に近づいた際の処理
     @MainActor
     func approachTableViewBottom() {
         guard loadState == .standby else { return }
+        guard lastPage != page else { return }
 
         view.startAnimatingIndicator()
         loadState = .loading
         page += 1
-        
+
         Task {
             do {
                 try await fetchNotForkedRepositories()
-                
+
                 view.stopAnimatingIndicator()
                 view.loadUserInfo()
             } catch let error as APIError {
