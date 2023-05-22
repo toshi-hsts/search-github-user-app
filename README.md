@@ -6,29 +6,40 @@ GitHubのユーザ情報を調べられるアプリ
 ```zsh
 git clone git@github.com:toshi-hsts/search-github-user-app.git
 cd/to/path
-open ios-engineer-codecheck.xcodeproj
+open search-github-user-app.xcodeproj
 ```
 2. シミュレータor実機を起動　
+3. レート制限を緩和する場合は、アクセストークンを設定する（設定しなくても動く） <br>
+https://docs.github.com/ja/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+```swift
+class Env {
+    static let accessToken = "アクセストークン"
+}
+```
 
 ## 開発環境
-Xcode 14.3 
+Xcode 14.3
+
+## ターゲット
+iOS15以上
 
 ## 利用外部ライブラリ
 - SDWebImage
 （Swift Package Managerを利用して管理）
+非同期取得とキャッシュが容易に実現できるため選定
 
 ## 仕様　
 🔸ユーザ一覧画面
 - ユーザ検索機能
-- 検索後一覧表示
+- 検索後は一覧表示
 - 検索結果の総数を表示
-- 一覧にはアイコンとユーザ名を表示
-- 各行を選択してユーザリポジトリ画面に遷移
+- 一覧にはアイコンとユーザ名とタイプを表示
+- 各行を選択してユーザ詳細画面に遷移
 - 一覧を下にスクロールすると追加読み込み
 - 通信待ち時はローディング画面を表示
 - エラー捕捉時はアラートを表示
 
-🔸ユーザリポジトリ画面
+🔸ユーザ詳細画面
 - 上部にアイコン、ユーザ名、フルネーム、フォロワー数、フォロー数、説明文を表示
 - 下部にforkedリポジトリではないユーザのリポジトリ一覧を表示
 - 一覧にはリポジトリ名、開発言語、スター数、説明文を表示
