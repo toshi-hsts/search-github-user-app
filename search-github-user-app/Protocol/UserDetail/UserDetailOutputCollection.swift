@@ -10,6 +10,7 @@ import Foundation
 protocol UserDetailOutputCollection: AnyObject {
     func loadUserInfo()
     func moveToDetail(with urlString: String)
+    func showNoResultView()
     func startAnimatingIndicator()
     func stopAnimatingIndicator()
     func showErrorAlert(with message: String)

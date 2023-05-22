@@ -11,8 +11,8 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
 
-    func setup(name: String, iconUrl: String) {
-        userNameLabel.text = name
+    func setup(name: String, type: String, iconUrl: String) {
+        userNameLabel.text = "【\(type)】\(name)"
         iconImageView.setImage(with: URL(string: iconUrl))
     }
 }

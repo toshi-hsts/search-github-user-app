@@ -44,6 +44,10 @@ final class UserDetailPresenter {
 
         repositories += fetchedWrapperRepositories.repositories.filter { $0.isFork == false }
         loadState = .standby
+
+        if repositories.isEmpty {
+            await handleNoRepository()
+        }
     }
 }
 
@@ -54,7 +58,11 @@ extension UserDetailPresenter: UserDetailInputCollection {
         let repository = repositories[index]
         view.moveToDetail(with: repository.htmlUrl)
     }
-
+    /// リポジトリ0件のとき
+    @MainActor
+    func handleNoRepository() {
+        view.showNoResultView()
+    }
     /// ユーザ詳細情報取得
     @MainActor
     func getUser() {
@@ -73,7 +81,6 @@ extension UserDetailPresenter: UserDetailInputCollection {
             }
         }
     }
-
     /// TableViewが下部に近づいた際の処理
     @MainActor
     func approachTableViewBottom() {
