@@ -160,13 +160,8 @@
 		CA4665422A160353002683E3 /* Codable */ = {
 			isa = PBXGroup;
 			children = (
-				CA4665432A160371002683E3 /* UserSearchResult.swift */,
-				CAE313662A1B9DF200379B85 /* RepositoryWrapper.swift */,
-				CA7ADE9F2A16803C00971CD7 /* RepositorySearchResult.swift */,
-				CA4665452A16038A002683E3 /* UserWrapper.swift */,
-				CA7ADE992A164CD300971CD7 /* User.swift */,
-				CA7ADE9B2A16790D00971CD7 /* Repository.swift */,
-				CAE313642A1B990200379B85 /* UserSearchResultWrapper.swift */,
+				CAE313682A1BA22600379B85 /* User */,
+				CAE313692A1BA24200379B85 /* Repository */,
 			);
 			path = Codable;
 			sourceTree = "<group>";
@@ -305,6 +300,27 @@
 				CA7ADEE02A18A16200971CD7 /* WebViewOutputCollection.swift */,
 			);
 			path = WebView;
+			sourceTree = "<group>";
+		};
+		CAE313682A1BA22600379B85 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				CA7ADE992A164CD300971CD7 /* User.swift */,
+				CA4665432A160371002683E3 /* UserSearchResult.swift */,
+				CA4665452A16038A002683E3 /* UserWrapper.swift */,
+				CAE313642A1B990200379B85 /* UserSearchResultWrapper.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		CAE313692A1BA24200379B85 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CA7ADE9F2A16803C00971CD7 /* RepositorySearchResult.swift */,
+				CA7ADE9B2A16790D00971CD7 /* Repository.swift */,
+				CAE313662A1B9DF200379B85 /* RepositoryWrapper.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
