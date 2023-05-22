@@ -9,21 +9,21 @@ import UIKit
 
 class UserDetailViewController: UIViewController {
     private var presenter: UserDetailInputCollection!
-    
+
     @IBOutlet weak private var iconImageView: UIImageView!
     @IBOutlet weak private var profileLabel: UILabel!
     @IBOutlet weak private var repositoryTableView: UITableView!
     @IBOutlet weak private var repositoryListTitleLabel: UILabel!
     @IBOutlet weak private var loadingView: LoadingView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.getUser()
         startAnimatingIndicator()
-        
+
         navigationItem.backButtonTitle = "戻る"
     }
-    
+
     func inject(presenter: UserDetailInputCollection) {
         self.presenter = presenter
     }
@@ -34,14 +34,14 @@ extension UserDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.repositories.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "repoCell", for: indexPath)
         let repo = presenter.repositories[indexPath.row]
-        
+
         cell.textLabel?.text = "\(repo.name) / 言語：\(repo.language) / ⭐️\(repo.stargazersCount)"
         cell.detailTextLabel?.text = presenter.repositories[indexPath.row].description
-        
+
         return cell
     }
 }
@@ -60,9 +60,16 @@ extension UserDetailViewController: UserDetailOutputCollection {
     /// ユーザ情報を反映させる
     func loadUserInfo() {
         guard let user = presenter.user else { return }
-        
+
         iconImageView.setImage(with: URL(string: user.avatarUrl))
-        profileLabel.text = "ユーザ名: \(user.name)\nフルネーム: \(user.fullName ?? "登録なし")\nフォロワー数: \(user.followers)\nフォロー数: \(user.following)\n自己紹介: \(user.bio ?? "登録なし")"
+        profileLabel.text =
+            """
+            ユーザ名: \(user.name)
+            フルネーム: \(user.fullName ?? "登録なし")
+            フォロワー数: \(user.followers.addComma())
+            フォロー数: \(user.following.addComma())
+            自己紹介: \(user.bio ?? "登録なし")
+            """
         repositoryListTitleLabel.isHidden = false
         repositoryTableView.reloadData()
     }
@@ -109,7 +116,7 @@ extension UserDetailViewController {
         // 現在の位置からスクロールの最下部までの距離
         let distance = maxContentOffsetY - currentContentOffsetY
         // 最下部から一定距離に近づいたら追加読み込みする
-        if distance < 50 {
+        if distance < 10 {
             presenter.approachTableViewBottom()
         }
     }
