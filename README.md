@@ -45,13 +45,14 @@ iOS15以上
 - 一覧にはリポジトリ名、開発言語、スター数、説明文を表示
 - 各行を選択してWebView画面に遷移
 - 一覧を下にスクロールすると追加読み込み
+- リポジトリがない場合はない旨を表示
 - 通信待ち時はローディング画面を表示
 - エラー捕捉時はアラートを表示
 
 ## 操作動画
-![demo](https://github.com/toshi-hsts/search-github-user-app/assets/80573353/731cda6f-9879-41bb-a6e1-89ce23254dc3)
+![demo](https://github.com/toshi-hsts/search-github-user-app/assets/80573353/6961acdf-d453-4f2b-810a-e381c0b78780)
 
 ## アラート画面
-<img src="https://github.com/toshi-hsts/search-github-user-app/assets/80573353/e9d2a244-ff8c-431a-bd4d-868f5e328ee6" width=260>
+<img src="https://github.com/toshi-hsts/search-github-user-app/assets/80573353/8a7034d7-8e76-4010-bc82-b162b7ca81cd" width=260>
 
-<img src="https://github.com/toshi-hsts/search-github-user-app/assets/80573353/2c971514-cdaa-4950-b381-ee3d69111604" width=260>
+<img src="https://github.com/toshi-hsts/search-github-user-app/assets/80573353/3aa1c785-2e17-4559-b6a9-0194c34254f9" width=260>
