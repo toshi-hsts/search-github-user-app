@@ -10,6 +10,7 @@ import UIKit
 final class Router {
 
     public static let shared = Router()
+    private let apiClient = GitHubAPIClient.shared
 
     /// root画面を表示する
     func showRoot(showHandler: (_ rootNC: UINavigationController) -> Void) {
@@ -17,7 +18,7 @@ final class Router {
                 .instantiateViewController(withIdentifier: "rootVC") as? RootViewController else { return }
 
         let rootNC = UINavigationController(rootViewController: rootVC)
-        let rootPresenter = RootPresenter(view: rootVC)
+        let rootPresenter = RootPresenter(view: rootVC, apiClient: apiClient)
 
         rootVC.inject(rootPresenter)
         showHandler(rootNC)
@@ -29,7 +30,7 @@ final class Router {
         guard let detailVC = UIStoryboard(name: "UserDetail", bundle: nil)
                 .instantiateViewController(withIdentifier: "detailVC") as? UserDetailViewController else { return}
 
-        let userDetailPresenter = UserDetailPresenter(view: detailVC, userName: userName)
+        let userDetailPresenter = UserDetailPresenter(view: detailVC, apiClient: apiClient, userName: userName)
         detailVC.inject(presenter: userDetailPresenter)
 
         showHandler(detailVC)
