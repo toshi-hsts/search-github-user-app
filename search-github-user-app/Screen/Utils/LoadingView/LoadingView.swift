@@ -10,7 +10,7 @@ import UIKit
 class LoadingView: UIView {
     @IBOutlet weak private var loadingFrameView: UIView!
     @IBOutlet weak private var indicator: UIActivityIndicatorView!
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         loadNib()
