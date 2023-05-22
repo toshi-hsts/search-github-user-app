@@ -15,6 +15,7 @@ final class UserDetailPresenter {
     }
 
     private weak var view: UserDetailOutputCollection!
+    private weak var githubAPIClient: GitHubAPIClientCollection!
     private(set) var userName: String = ""
     private(set) var user: User?
     private(set) var repositories: [Repository] = []
@@ -22,17 +23,20 @@ final class UserDetailPresenter {
     private var page = 1
     private var lastPage = 1
 
-    init(view: UserDetailOutputCollection, userName: String) {
+    init(view: UserDetailOutputCollection,
+         apiClient: GitHubAPIClientCollection,
+         userName: String) {
         self.view = view
+        self.githubAPIClient = apiClient
         self.userName = userName
     }
 
     private func fetchUser() async throws {
-        user = try await GitHubAPIClient.shared.getUser(with: userName)
+        user = try await githubAPIClient.getUser(with: userName)
     }
 
     private func fetchNotForkedRepositories() async throws {
-        let fetchedWrapperRepositories = try await GitHubAPIClient.shared.getRepositories(with: userName, page: page)
+        let fetchedWrapperRepositories = try await githubAPIClient.getRepositories(with: userName, page: page)
 
         if let lastPage = fetchedWrapperRepositories.lastPage {
             self.lastPage = lastPage
