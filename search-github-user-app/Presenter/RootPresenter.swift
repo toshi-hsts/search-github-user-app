@@ -15,14 +15,16 @@ final class RootPresenter {
     }
 
     private weak var view: RootOutputCollection!
+    private weak var githubAPIClient: GitHubAPIClientCollection!
     private(set) var users: [UserWrapper] = []
     private var loadState: LoadState = .none
     private var page = 1
     private var lastPage = 1
     private var searchedWord = ""
 
-    init(view: RootOutputCollection) {
+    init(view: RootOutputCollection, apiClient: GitHubAPIClientCollection) {
         self.view = view
+        self.githubAPIClient = apiClient
     }
 }
 
@@ -39,7 +41,7 @@ extension RootPresenter: RootInputCollection {
     func getUsers() {
         Task {
             do {
-                let fetchUsers = try await GitHubAPIClient.shared.getUsers(keyword: searchedWord, page: page)
+                let fetchUsers = try await githubAPIClient.getUsers(keyword: searchedWord, page: page)
 
                 if let lastPage = fetchUsers.lastPage {
                     self.lastPage = lastPage

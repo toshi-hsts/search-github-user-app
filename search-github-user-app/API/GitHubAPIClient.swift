@@ -7,13 +7,13 @@
 
 import Foundation
 
-class GitHubAPIClient {
+final class GitHubAPIClient: GitHubAPIClientCollection {
 
     public static let shared = GitHubAPIClient()
 
-    let apiVersion = "2022-11-28"
-    let accept = "application/vnd.github+json"
-    let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
+    private let apiVersion = "2022-11-28"
+    private let accept = "application/vnd.github+json"
+    private let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
 
     func getUsers(keyword: String, page: Int) async throws -> UserSearchResultWrapper {
         let urlString = "https://api.github.com/search/users?q=\(keyword)&page=\(page)"
