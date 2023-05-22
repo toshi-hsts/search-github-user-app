@@ -45,6 +45,10 @@
 		CA7ADEDE2A189DC400971CD7 /* WebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADEDD2A189DC400971CD7 /* WebViewPresenter.swift */; };
 		CA7ADEE12A18A16200971CD7 /* WebViewOutputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADEE02A18A16200971CD7 /* WebViewOutputCollection.swift */; };
 		CA7ADEE32A18A16F00971CD7 /* WebViewInputCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7ADEE22A18A16F00971CD7 /* WebViewInputCollection.swift */; };
+		CAA7C0A02A1BD32D007370E7 /* search_github_user_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7C09F2A1BD32D007370E7 /* search_github_user_appTests.swift */; };
+		CAA7C0A72A1BD65D007370E7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = CAA7C0A62A1BD65D007370E7 /* SDWebImage */; };
+		CAA7C0A92A1BD67E007370E7 /* RootVCMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7C0A82A1BD67E007370E7 /* RootVCMock.swift */; };
+		CAA7C0AB2A1BD75D007370E7 /* APIClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA7C0AA2A1BD75D007370E7 /* APIClientMock.swift */; };
 		CAE313652A1B990200379B85 /* UserSearchResultWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE313642A1B990200379B85 /* UserSearchResultWrapper.swift */; };
 		CAE313672A1B9DF200379B85 /* RepositoryWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE313662A1B9DF200379B85 /* RepositoryWrapper.swift */; };
 		CAE3136C2A1BB4AA00379B85 /* GitHubAPIClientCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE3136B2A1BB4AA00379B85 /* GitHubAPIClientCollection.swift */; };
@@ -52,6 +56,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		CA6B18642A1A7D4900163B7F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA46651D2A1547E7002683E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA4665242A1547E7002683E3;
+			remoteInfo = "search-github-user-app";
+		};
+		CAA7C0A12A1BD32D007370E7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CA46651D2A1547E7002683E3 /* Project object */;
 			proxyType = 1;
@@ -101,6 +112,10 @@
 		CA7ADEDD2A189DC400971CD7 /* WebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPresenter.swift; sourceTree = "<group>"; };
 		CA7ADEE02A18A16200971CD7 /* WebViewOutputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewOutputCollection.swift; sourceTree = "<group>"; };
 		CA7ADEE22A18A16F00971CD7 /* WebViewInputCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewInputCollection.swift; sourceTree = "<group>"; };
+		CAA7C09D2A1BD32D007370E7 /* search-github-user-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "search-github-user-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAA7C09F2A1BD32D007370E7 /* search_github_user_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search_github_user_appTests.swift; sourceTree = "<group>"; };
+		CAA7C0A82A1BD67E007370E7 /* RootVCMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCMock.swift; sourceTree = "<group>"; };
+		CAA7C0AA2A1BD75D007370E7 /* APIClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientMock.swift; sourceTree = "<group>"; };
 		CAE313642A1B990200379B85 /* UserSearchResultWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchResultWrapper.swift; sourceTree = "<group>"; };
 		CAE313662A1B9DF200379B85 /* RepositoryWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryWrapper.swift; sourceTree = "<group>"; };
 		CAE3136B2A1BB4AA00379B85 /* GitHubAPIClientCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPIClientCollection.swift; sourceTree = "<group>"; };
@@ -123,6 +138,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAA7C09A2A1BD32D007370E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAA7C0A72A1BD65D007370E7 /* SDWebImage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -140,6 +163,7 @@
 			children = (
 				CA4665272A1547E7002683E3 /* search-github-user-app */,
 				CA6B185F2A1A7D4900163B7F /* search-github-user-appUITests */,
+				CAA7C09E2A1BD32D007370E7 /* search-github-user-appTests */,
 				CA4665262A1547E7002683E3 /* Products */,
 				CA7ADEA52A179B2C00971CD7 /* Frameworks */,
 			);
@@ -150,6 +174,7 @@
 			children = (
 				CA4665252A1547E7002683E3 /* search-github-user-app.app */,
 				CA6B185E2A1A7D4900163B7F /* search-github-user-appUITests.xctest */,
+				CAA7C09D2A1BD32D007370E7 /* search-github-user-appTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -338,6 +363,24 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		CAA7C09E2A1BD32D007370E7 /* search-github-user-appTests */ = {
+			isa = PBXGroup;
+			children = (
+				CAA7C0AC2A1BECA1007370E7 /* RootPresenterTests */,
+			);
+			path = "search-github-user-appTests";
+			sourceTree = "<group>";
+		};
+		CAA7C0AC2A1BECA1007370E7 /* RootPresenterTests */ = {
+			isa = PBXGroup;
+			children = (
+				CAA7C09F2A1BD32D007370E7 /* search_github_user_appTests.swift */,
+				CAA7C0A82A1BD67E007370E7 /* RootVCMock.swift */,
+				CAA7C0AA2A1BD75D007370E7 /* APIClientMock.swift */,
+			);
+			path = RootPresenterTests;
+			sourceTree = "<group>";
+		};
 		CAE313682A1BA22600379B85 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,6 +452,27 @@
 			productReference = CA6B185E2A1A7D4900163B7F /* search-github-user-appUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		CAA7C09C2A1BD32D007370E7 /* search-github-user-appTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CAA7C0A52A1BD32D007370E7 /* Build configuration list for PBXNativeTarget "search-github-user-appTests" */;
+			buildPhases = (
+				CAA7C0992A1BD32D007370E7 /* Sources */,
+				CAA7C09A2A1BD32D007370E7 /* Frameworks */,
+				CAA7C09B2A1BD32D007370E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CAA7C0A22A1BD32D007370E7 /* PBXTargetDependency */,
+			);
+			name = "search-github-user-appTests";
+			packageProductDependencies = (
+				CAA7C0A62A1BD65D007370E7 /* SDWebImage */,
+			);
+			productName = "search-github-user-appTests";
+			productReference = CAA7C09D2A1BD32D007370E7 /* search-github-user-appTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -423,6 +487,10 @@
 						CreatedOnToolsVersion = 14.3;
 					};
 					CA6B185D2A1A7D4900163B7F = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = CA4665242A1547E7002683E3;
+					};
+					CAA7C09C2A1BD32D007370E7 = {
 						CreatedOnToolsVersion = 14.3;
 						TestTargetID = CA4665242A1547E7002683E3;
 					};
@@ -446,6 +514,7 @@
 			targets = (
 				CA4665242A1547E7002683E3 /* search-github-user-app */,
 				CA6B185D2A1A7D4900163B7F /* search-github-user-appUITests */,
+				CAA7C09C2A1BD32D007370E7 /* search-github-user-appTests */,
 			);
 		};
 /* End PBXProject section */
@@ -466,6 +535,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CA6B185C2A1A7D4900163B7F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CAA7C09B2A1BD32D007370E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -543,6 +619,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CAA7C0992A1BD32D007370E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CAA7C0AB2A1BD75D007370E7 /* APIClientMock.swift in Sources */,
+				CAA7C0A92A1BD67E007370E7 /* RootVCMock.swift in Sources */,
+				CAA7C0A02A1BD32D007370E7 /* search_github_user_appTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -550,6 +636,11 @@
 			isa = PBXTargetDependency;
 			target = CA4665242A1547E7002683E3 /* search-github-user-app */;
 			targetProxy = CA6B18642A1A7D4900163B7F /* PBXContainerItemProxy */;
+		};
+		CAA7C0A22A1BD32D007370E7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA4665242A1547E7002683E3 /* search-github-user-app */;
+			targetProxy = CAA7C0A12A1BD32D007370E7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -777,6 +868,44 @@
 			};
 			name = Release;
 		};
+		CAA7C0A32A1BD32D007370E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4HG9ZCZ4F4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.tab.hsts.search-github-user-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/search-github-user-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/search-github-user-app";
+			};
+			name = Debug;
+		};
+		CAA7C0A42A1BD32D007370E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4HG9ZCZ4F4;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.tab.hsts.search-github-user-appTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/search-github-user-app.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/search-github-user-app";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -807,6 +936,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		CAA7C0A52A1BD32D007370E7 /* Build configuration list for PBXNativeTarget "search-github-user-appTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CAA7C0A32A1BD32D007370E7 /* Debug */,
+				CAA7C0A42A1BD32D007370E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -822,6 +960,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		CA7ADE972A1642EF00971CD7 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA7ADE962A1642EF00971CD7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		CAA7C0A62A1BD65D007370E7 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CA7ADE962A1642EF00971CD7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;

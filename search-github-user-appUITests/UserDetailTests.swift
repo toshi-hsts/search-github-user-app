@@ -29,7 +29,7 @@ final class UserDetailTests: XCTestCase {
         let avatarImage = app.images.firstMatch
         let profile = app.staticTexts["profile"]
         let tableView = app.tables.firstMatch
-    
+
         XCTAssertTrue(avatarImage.exists)
         XCTAssertTrue(profile.exists)
         XCTAssertTrue(tableView.exists)
@@ -41,7 +41,7 @@ final class UserDetailTests: XCTestCase {
         app.buttons["戻る"].tap()
         XCTAssertTrue(app.navigationBars[rootScreenTitle].exists)
     }
-    
+
     // WebView画面に遷移できること
     func testShowWebViewScreen() throws {
         let firstCell = app.cells.element(boundBy: 0)
