@@ -15,6 +15,7 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak private var repositoryTableView: UITableView!
     @IBOutlet weak private var repositoryListTitleLabel: UILabel!
     @IBOutlet weak private var loadingView: LoadingView!
+    @IBOutlet weak private var noResultLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,10 @@ extension UserDetailViewController: UserDetailOutputCollection {
         Router.shared.showWebView(with: urlString) { webVC in
             navigationController?.pushViewController(webVC, animated: true)
         }
+    }
+    /// 検索結果がないことを表示する
+    func showNoResultView() {
+        noResultLabel.isHidden = false
     }
     /// インジケーターを開始する
     func startAnimatingIndicator() {

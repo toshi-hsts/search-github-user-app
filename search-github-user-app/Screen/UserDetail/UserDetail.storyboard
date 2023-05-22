@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -68,6 +69,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="リポジトリはありません！" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gJ0-GA-tQQ">
+                                <rect key="frame" x="20" y="526.33333333333337" width="353" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="of5-iK-Fsl" customClass="LoadingView" customModule="search_github_user_app" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </view>
@@ -76,6 +83,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="of5-iK-Fsl" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0Zm-GI-uQa"/>
+                            <constraint firstItem="gJ0-GA-tQQ" firstAttribute="top" secondItem="rHM-NK-N9k" secondAttribute="bottom" constant="20" id="0h3-7u-hXd"/>
                             <constraint firstItem="2mf-wp-f9o" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="2kJ-Jm-tFP"/>
                             <constraint firstItem="2mf-wp-f9o" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.4" id="4nY-zD-V5b"/>
                             <constraint firstAttribute="bottom" secondItem="2mf-wp-f9o" secondAttribute="bottom" id="5bl-rn-e8L"/>
@@ -89,8 +97,10 @@
                             <constraint firstItem="FO5-iF-CW6" firstAttribute="top" secondItem="DP7-b5-RRq" secondAttribute="bottom" constant="20" id="cfx-pV-v9Z"/>
                             <constraint firstItem="DP7-b5-RRq" firstAttribute="width" secondItem="5EZ-qb-Rvc" secondAttribute="width" multiplier="0.5" id="cyK-hn-oWY"/>
                             <constraint firstItem="DP7-b5-RRq" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="g6g-2R-gmb"/>
+                            <constraint firstItem="gJ0-GA-tQQ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="hbs-4K-iwK"/>
                             <constraint firstItem="rHM-NK-N9k" firstAttribute="top" secondItem="FO5-iF-CW6" secondAttribute="bottom" constant="10" id="iBY-Yg-yfQ"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rHM-NK-N9k" secondAttribute="trailing" constant="20" id="m0B-9L-J0j"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="gJ0-GA-tQQ" secondAttribute="trailing" constant="20" id="mKn-M2-9RN"/>
                             <constraint firstItem="FO5-iF-CW6" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="tyO-ld-B9G"/>
                             <constraint firstItem="of5-iK-Fsl" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="weE-bq-mJm"/>
                             <constraint firstItem="of5-iK-Fsl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="zSM-ho-TNG"/>
@@ -99,6 +109,7 @@
                     <connections>
                         <outlet property="iconImageView" destination="DP7-b5-RRq" id="VN6-5I-Qzh"/>
                         <outlet property="loadingView" destination="of5-iK-Fsl" id="o0x-6F-dva"/>
+                        <outlet property="noResultLabel" destination="gJ0-GA-tQQ" id="Q1u-Je-rZh"/>
                         <outlet property="profileLabel" destination="FO5-iF-CW6" id="zsW-4N-vCE"/>
                         <outlet property="repositoryListTitleLabel" destination="rHM-NK-N9k" id="4Fp-Mf-8Wy"/>
                         <outlet property="repositoryTableView" destination="2mf-wp-f9o" id="gU6-B7-j7f"/>
