@@ -46,7 +46,7 @@ final class UserDetailPresenter {
         loadState = .standby
 
         if repositories.isEmpty {
-            handleNoRepository()
+            await handleNoRepository()
         }
     }
 }
@@ -59,6 +59,7 @@ extension UserDetailPresenter: UserDetailInputCollection {
         view.moveToDetail(with: repository.htmlUrl)
     }
     /// リポジトリ0件のとき
+    @MainActor
     func handleNoRepository() {
         view.showNoResultView()
     }
