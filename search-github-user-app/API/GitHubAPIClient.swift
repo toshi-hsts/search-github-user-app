@@ -15,9 +15,10 @@ class GitHubAPIClient {
     let accept = "application/vnd.github+json"
     let authorization = Env.accessToken.isEmpty ? "" : "Bearer \(Env.accessToken)"
 
-    func getUsers(keyword: String, page: Int) async throws -> UserSearchResult? {
+    func getUsers(keyword: String, page: Int) async throws -> UserSearchResultWrapper {
         let urlString = "https://api.github.com/search/users?q=\(keyword)&page=\(page)"
         var searchResult: UserSearchResult?
+        var lastPage: Int?
 
         guard let url = URL(string: urlString) else {
             throw APIError.invalidSearchWord
@@ -38,6 +39,10 @@ class GitHubAPIClient {
                 throw APIError.notStatusCode
             }
 
+            let res = urlResponse as? HTTPURLResponse
+            let headers = res?.allHeaderFields
+            lastPage = getLastPage(from: headers?["Link"] as? String)
+
             switch httpStatus.statusCode {
             case 200 ..< 400:
                 do {
@@ -55,7 +60,9 @@ class GitHubAPIClient {
             throw APIError.noResponseData(catchErrorText: error.localizedDescription)
         }
 
-        return searchResult
+        let userSearchResultWrapper = UserSearchResultWrapper(userSearchResult: searchResult, lastPage: lastPage)
+
+        return userSearchResultWrapper
     }
 
     func getUser(with name: String) async throws -> User? {
@@ -103,9 +110,10 @@ class GitHubAPIClient {
         return user
     }
 
-    func getRepositories(with userName: String, page: Int) async throws -> [Repository] {
+    func getRepositories(with userName: String, page: Int) async throws -> RepositoryWrapper {
         let urlString = "https://api.github.com/users/\(userName)/repos?page=\(page)"
         var repositories: [Repository] = []
+        var lastPage: Int?
 
         guard let url = URL(string: urlString) else {
             throw APIError.invalidSearchWord
@@ -127,6 +135,10 @@ class GitHubAPIClient {
                 throw APIError.notStatusCode
             }
 
+            let res = urlResponse as? HTTPURLResponse
+            let headers = res?.allHeaderFields
+            lastPage = getLastPage(from: headers?["Link"] as? String)
+
             switch httpStatus.statusCode {
             case 200 ..< 400:
                 do {
@@ -145,6 +157,28 @@ class GitHubAPIClient {
             throw APIError.noResponseData(catchErrorText: error.localizedDescription)
         }
 
-        return repositories
+        let repositoryWrapper = RepositoryWrapper(repositories: repositories, lastPage: lastPage)
+        return repositoryWrapper
+    }
+
+    /// ページネーション情報から最後のページを取得
+    private func getLastPage(from linkHeader: String?) -> Int? {
+        guard let linkHeader = linkHeader else { return nil }
+
+        var lastPageNumber: Int?
+
+        let links = linkHeader.components(separatedBy: ",")
+        for link in links {
+            if link.contains("rel=\"last\"") {
+                let regexPattern = "page=(\\d+)"
+                if let range = link.range(of: regexPattern, options: .regularExpression) {
+                    let lastPageString = link[range].replacingOccurrences(of: "page=", with: "")
+                    lastPageNumber = Int(lastPageString)
+
+                }
+            }
+        }
+
+        return lastPageNumber
     }
 }

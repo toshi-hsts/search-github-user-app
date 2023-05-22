@@ -20,6 +20,7 @@ final class UserDetailPresenter {
     private(set) var repositories: [Repository] = []
     private var loadState: LoadState = .none
     private var page = 1
+    private var lastPage = 1
 
     init(view: UserDetailOutputCollection, userName: String) {
         self.view = view
@@ -31,8 +32,13 @@ final class UserDetailPresenter {
     }
 
     private func fetchNotForkedRepositories() async throws {
-        let fetchedRepositories = try await GitHubAPIClient.shared.getRepositories(with: userName, page: page)
-        repositories += fetchedRepositories.filter { $0.isFork == false }
+        let fetchedWrapperRepositories = try await GitHubAPIClient.shared.getRepositories(with: userName, page: page)
+
+        if let lastPage = fetchedWrapperRepositories.lastPage {
+            self.lastPage = lastPage
+        }
+
+        repositories += fetchedWrapperRepositories.repositories.filter { $0.isFork == false }
         loadState = .standby
     }
 }
@@ -68,6 +74,7 @@ extension UserDetailPresenter: UserDetailInputCollection {
     @MainActor
     func approachTableViewBottom() {
         guard loadState == .standby else { return }
+        guard lastPage != page else { return }
 
         view.startAnimatingIndicator()
         loadState = .loading

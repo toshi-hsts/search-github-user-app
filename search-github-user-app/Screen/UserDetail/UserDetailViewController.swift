@@ -116,7 +116,7 @@ extension UserDetailViewController {
         // 現在の位置からスクロールの最下部までの距離
         let distance = maxContentOffsetY - currentContentOffsetY
         // 最下部から一定距離に近づいたら追加読み込みする
-        if distance < 50 {
+        if distance < 10 {
             presenter.approachTableViewBottom()
         }
     }

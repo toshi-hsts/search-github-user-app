@@ -18,6 +18,7 @@ final class RootPresenter {
     private(set) var users: [UserWrapper] = []
     private var loadState: LoadState = .none
     private var page = 1
+    private var lastPage = 1
     private var searchedWord = ""
 
     init(view: RootOutputCollection) {
@@ -40,13 +41,16 @@ extension RootPresenter: RootInputCollection {
             do {
                 let fetchUsers = try await GitHubAPIClient.shared.getUsers(keyword: searchedWord, page: page)
 
-                users += fetchUsers?.items ?? []
+                if let lastPage = fetchUsers.lastPage {
+                    self.lastPage = lastPage
+                }
+                users += fetchUsers.userSearchResult?.items ?? []
                 loadState = .standby
                 view.tableReload()
                 view.stopAnimatingIndicator()
 
                 if page == 1 {
-                    view.setTotalCount(fetchUsers?.totalCount ?? 0)
+                    view.setTotalCount(fetchUsers.userSearchResult?.totalCount ?? 0)
                 }
             } catch let error as APIError {
                 print("error: \(error.description)")
@@ -61,10 +65,12 @@ extension RootPresenter: RootInputCollection {
     @MainActor
     func approachTableViewBottom() {
         guard loadState == .standby else { return }
+        guard lastPage != page else { return }
 
+        page += 1
         view.startAnimatingIndicator()
         loadState = .loading
-        page += 1
+
         getUsers()
     }
 
@@ -81,6 +87,7 @@ extension RootPresenter: RootInputCollection {
         view.startAnimatingIndicator()
         page = 1
         users = []
+        lastPage = 1
         loadState = .loading
         getUsers()
     }
