@@ -13,7 +13,7 @@ final class RootPresenter {
         case loading
         case none
     }
-    
+
     private weak var view: RootOutputCollection!
     private(set) var users: [UserWrapper] = []
     private var loadState: LoadState = .none
@@ -32,19 +32,19 @@ extension RootPresenter: RootInputCollection {
         let user = users[index]
         view.moveToDetail(with: user.name)
     }
-    
+
     /// ユーザを取得する
     @MainActor
     func getUsers() {
         Task {
             do {
                 let fetchUsers = try await GitHubAPIClient.shared.getUsers(keyword: searchedWord, page: page)
-                
+
                 users += fetchUsers?.items ?? []
                 loadState = .standby
                 view.tableReload()
                 view.stopAnimatingIndicator()
-                
+
                 if page == 1 {
                     view.setTotalCount(fetchUsers?.totalCount ?? 0)
                 }
@@ -56,7 +56,7 @@ extension RootPresenter: RootInputCollection {
             }
         }
     }
-    
+
     /// TableViewが下部に近づいた際の処理
     @MainActor
     func approachTableViewBottom() {
@@ -67,14 +67,14 @@ extension RootPresenter: RootInputCollection {
         page += 1
         getUsers()
     }
-    
+
     ///　検索ボタンが押された際の処理
     @MainActor
     func tapSearchButton(with searchWord: String) {
         searchedWord = searchWord
         getFirstPageUsers()
     }
-    
+
     /// 1 page目のユーザを取得
     @MainActor
     func getFirstPageUsers() {

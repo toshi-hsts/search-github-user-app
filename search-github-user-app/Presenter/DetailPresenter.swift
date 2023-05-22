@@ -13,7 +13,7 @@ final class UserDetailPresenter {
         case loading
         case none
     }
-    
+
     private weak var view: UserDetailOutputCollection!
     private(set) var userName: String = ""
     private(set) var user: User?
@@ -25,11 +25,11 @@ final class UserDetailPresenter {
         self.view = view
         self.userName = userName
     }
-    
+
     private func fetchUser() async throws {
         user = try await GitHubAPIClient.shared.getUser(with: userName)
     }
-    
+
     private func fetchNotForkedRepositories() async throws {
         let fetchedRepositories = try await GitHubAPIClient.shared.getRepositories(with: userName, page: page)
         repositories += fetchedRepositories.filter { $0.isFork == false }
@@ -44,7 +44,7 @@ extension UserDetailPresenter: UserDetailInputCollection {
         let repository = repositories[index]
         view.moveToDetail(with: repository.htmlUrl)
     }
-    
+
     /// ユーザ詳細情報取得
     @MainActor
     func getUser() {
@@ -52,8 +52,8 @@ extension UserDetailPresenter: UserDetailInputCollection {
             do {
                 async let fetchUser: () =  fetchUser()
                 async let fetchNotForkedRepositories: () = fetchNotForkedRepositories()
-                let _ = try await (fetchUser, fetchNotForkedRepositories)
-                
+                _ = try await (fetchUser, fetchNotForkedRepositories)
+
                 view.stopAnimatingIndicator()
                 view.loadUserInfo()
             } catch let error as APIError {
@@ -63,7 +63,7 @@ extension UserDetailPresenter: UserDetailInputCollection {
             }
         }
     }
-    
+
     /// TableViewが下部に近づいた際の処理
     @MainActor
     func approachTableViewBottom() {
@@ -72,11 +72,11 @@ extension UserDetailPresenter: UserDetailInputCollection {
         view.startAnimatingIndicator()
         loadState = .loading
         page += 1
-        
+
         Task {
             do {
                 try await fetchNotForkedRepositories()
-                
+
                 view.stopAnimatingIndicator()
                 view.loadUserInfo()
             } catch let error as APIError {

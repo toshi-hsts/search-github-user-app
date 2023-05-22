@@ -14,7 +14,7 @@ struct Repository: Decodable {
     let description: String? // nilが返却される可能性があるためオプショナルとする(cf. https://docs.github.com/ja/rest/search)
     let htmlUrl: String
     let isFork: Bool
-    
+
     // initialLanguageがnilのときは"unknown"とする
     var language: String {
         initialLanguage == nil ? "unknown" : initialLanguage!
