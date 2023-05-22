@@ -25,7 +25,7 @@ iOS15以上
 
 ## 利用外部ライブラリ
 - SDWebImage
-（Swift Package Managerを利用して管理）
+（Swift Package Managerを利用して管理） <br>
 非同期取得とキャッシュが容易に実現できるため選定
 
 ## 仕様　
