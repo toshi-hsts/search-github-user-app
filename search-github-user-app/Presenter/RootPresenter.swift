@@ -36,6 +36,11 @@ extension RootPresenter: RootInputCollection {
         view.moveToDetail(with: user.name)
     }
 
+    /// ユーザリスト更新
+    func setUsers(with users: [UserWrapper]) {
+        self.users = users
+    }
+
     /// ユーザを取得する
     @MainActor
     func getUsers() {

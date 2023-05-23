@@ -44,6 +44,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <accessibility key="accessibilityConfiguration" identifier="loadingView"/>
             <constraints>
                 <constraint firstItem="V8g-98-va6" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="68c-vK-GMM"/>
                 <constraint firstItem="V8g-98-va6" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="aVo-Ru-e5q"/>
